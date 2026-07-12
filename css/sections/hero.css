@@ -35,7 +35,7 @@
   align-items: flex-start;
   gap: var(--sp-32);
   width: 42.2rem; /* 675px */
-  margin-left: var(--container-pad);
+  margin-left: var(--content-inset);
 }
 
 .hero__title {

@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--sp-20) var(--container-pad);
+  padding: var(--sp-20) var(--content-inset);
 }
 
 .header__logo img {

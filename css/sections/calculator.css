@@ -12,6 +12,7 @@
   display: flex;
   gap: var(--sp-8);
   width: 100%;
+  max-width: 63.75rem; /* 1020px = 1440px design width − 2×210px padding */
   align-items: stretch;
 }
 

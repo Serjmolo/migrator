@@ -51,6 +51,7 @@
 .sync__table {
   display: flex;
   align-items: stretch;
+  width: 40.5rem; /* 648px, 3 × 216px cols */
   border-radius: 0.5rem;
   overflow: hidden;
   background: var(--surface-white);
@@ -60,10 +61,11 @@
 
 .sync__col {
   display: flex;
+  flex: 1 0 0;
+  min-width: 0;
   flex-direction: column;
   align-items: center;
   gap: var(--sp-16);
-  width: 13.5rem; /* 216px */
   padding: var(--sp-16) var(--sp-12);
 }
 

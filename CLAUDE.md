@@ -22,15 +22,15 @@ The page is one `index.html` composed of 14 stacked sections + header + footer (
 - `js/main.js`, `js/calculator.js`, `js/video-carousel.js`, `js/form.js` — loaded as plain classic `<script src>` tags (not `type="module"`) at the end of `<body>` — see Calculator note below for why this matters.
 - `assets/images/<section>/`, `assets/icons/` — Figma exports, organized per section. When a Figma node is a composited icon (background chip + gradient icon + badge), export the whole containing frame as one PNG rather than pulling raw image fills individually — the raw fills for icon variants in this file are placeholder/identical assets and don't render correctly in isolation; the composited frame export is the one that matches the screenshot.
 
-### Fluid scaling (1200–1920px)
+### Fluid scaling (1200–1400px), fixed beyond (1400–1920px)
 
-The whole layout is built in `rem`, with `1rem = 16px` calibrated to the 1440px Figma design width. Root font-size is fluid:
+The whole layout is built in `rem`, with `1rem = 16px` calibrated to the 1440px Figma design width. Root font-size is fluid only up to 1400px, then holds fixed:
 
 ```css
-html { font-size: clamp(13.333px, 1.11111vw, 21.333px); }
+html { font-size: clamp(13.333px, 1.11111vw, 15.556px); }
 ```
 
-This scales every `rem`-based dimension proportionally between 1200px and 1920px viewports with no per-breakpoint media queries — at 1200px root is 13.33px (0.833× scale), at 1920px root is 21.33px (1.333× scale). `--container-width: 90rem` (1440÷16) means containers span edge-to-edge across the whole range. Convert new Figma px values by dividing by 16; convert Figma letter-spacing/tracking values to `em` (not `rem`) since those scale with the element's own font-size, not the viewport. **QA at exactly 1440px viewport width** — there `1rem === 16px` so devtools computed values match Figma px 1:1 for direct comparison against Figma screenshots.
+Between 1200px and 1400px this scales every `rem`-based dimension proportionally (13.33px root at 1200px up to 15.556px root at 1400px), with no per-breakpoint media queries. Above 1400px the root font-size stays pinned at 15.556px — nothing grows further. Content rows/grids that need to stop widening past that point (matching the calibrated ~1400px design column) additionally carry `max-width: var(--container-width)` on their main content wrapper (see `.data__grid`/`.speed__grid` for the reference pattern — every other section's equivalent content wrapper follows the same rule, one level per section: `.graph__diagram`, `.calc`, `.cost__cards`, `.table__wrap`, `.video__stage`, `.faq__list`, `.contact-form form`, `.footer__row`/`.footer__bottom`, and `.utp`/`.info` directly since those sections *are* the content row). Section backgrounds/padding are left uncapped so colored "card" sections can still bleed toward the viewport edge; only the content inside stops stretching. Convert new Figma px values by dividing by 16; convert Figma letter-spacing/tracking values to `em` (not `rem`) since those scale with the element's own font-size, not the viewport. **QA at exactly 1440px viewport width is no longer 1:1** — since scaling caps at 1400px (15.556px root, not 16px), 1440px+ viewports render very slightly (~2.8%) smaller than raw Figma px. QA the fluid range at 1200/1300/1400px where computed values still track `vw`, and QA 1400px itself as the frozen reference point for anything at or above it.
 
 ### Calculator (critical constraint)
 
