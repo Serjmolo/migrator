@@ -101,7 +101,7 @@
 }
 
 .graph__connector-line {
-  width: 2px;
+  width: 0.125rem; /* 2px */
   height: 1.5rem; /* 24px, split above/below badge for a 2x40px total span */
   background: var(--surface-blue);
   position: relative;
@@ -114,19 +114,19 @@
   left: 50%;
   width: 0;
   height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
+  border-left: 0.3125rem solid transparent; /* 5px */
+  border-right: 0.3125rem solid transparent; /* 5px */
   transform: translateX(-50%);
 }
 
 .graph__connector-line--top::before {
-  top: -1px;
-  border-bottom: 7px solid var(--surface-blue);
+  top: -0.0625rem; /* -1px */
+  border-bottom: 0.4375rem solid var(--surface-blue); /* 7px */
 }
 
 .graph__connector-line--bottom::after {
-  bottom: -1px;
-  border-top: 7px solid var(--surface-blue);
+  bottom: -0.0625rem; /* -1px */
+  border-top: 0.4375rem solid var(--surface-blue); /* 7px */
 }
 
 .graph__badge {

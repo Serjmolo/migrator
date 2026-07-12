@@ -64,7 +64,7 @@
 .footer__bottom {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--sp-24);
   width: 100%;
   max-width: var(--container-width);
