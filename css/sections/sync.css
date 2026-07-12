@@ -19,8 +19,10 @@
   display: flex;
   gap: var(--sp-24);
   align-items: stretch;
-  width: 85rem; /* 1360px */
-  max-width: 100%;
+  /* Same content column as every other section: full width inside the section
+     padding, capped at --container-width — aligns with the info block below. */
+  width: 100%;
+  max-width: var(--container-width);
   padding: 0.25rem 0.25rem 0.25rem var(--sp-32);
   border-radius: var(--radius-12);
   background: var(--surface-light-blue-01);
