@@ -110,13 +110,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--surface-white);
+  border-radius: 50%;
 }
 
 .sync__check::after {
   content: "";
-  width: 0.85rem;
-  height: 0.5rem;
+  width: 0.625rem;
+  height: 0.375rem;
   border: solid var(--text-primary);
-  border-width: 0 0 3px 3px;
-  transform: rotate(-45deg) translateY(-2px);
+  border-width: 0 0 2px 2px;
+  transform: rotate(-45deg) translateY(-1px);
 }
