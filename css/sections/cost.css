@@ -99,6 +99,7 @@
   gap: 1.0625rem; /* 17px */
   align-items: flex-start;
   width: 100%;
+  max-width: var(--container-width);
   padding: var(--sp-20) var(--sp-24);
   border-radius: 0.5rem;
   background: var(--surface-yellow);

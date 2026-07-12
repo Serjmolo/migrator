@@ -51,6 +51,7 @@
   color: var(--text-secondary);
 }
 
+
 .contact-form__textarea {
   width: 100%;
   display: flex;
@@ -80,8 +81,12 @@
 }
 
 .contact-form__field input:focus,
-.contact-form__textarea textarea:focus {
+.contact-form__textarea:focus-within {
   outline: 2px solid var(--surface-blue);
+}
+
+.contact-form__textarea textarea:focus {
+  outline: none;
 }
 
 .contact-form__status {

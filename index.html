@@ -399,71 +399,87 @@
     <div class="table__wrap">
       <div class="table__labels">
         <div class="table__labels-spacer"></div>
-        <div class="table__label-row" style="flex-grow:100">Технологии</div>
-        <div class="table__label-row" style="flex-grow:112">Особенности</div>
-        <div class="table__label-row" style="flex-grow:112">Скорость</div>
-        <div class="table__label-row" style="flex-grow:65">ОС</div>
-        <div class="table__label-row" style="flex-grow:65">Разработка</div>
-        <div class="table__label-row" style="flex-grow:65">Установка</div>
-        <div class="table__label-row" style="flex-grow:65">Настройка</div>
-        <div class="table__label-row" style="flex-grow:67">Ограничения</div>
+        <div class="table__label-rows">
+          <div class="table__label-row" style="height:100px">Технологии</div>
+          <div class="table__label-row" style="height:112px">Особенности</div>
+          <div class="table__label-row" style="height:112px">Скорость</div>
+          <div class="table__label-row table__label-row--fill">ОС</div>
+          <div class="table__label-row table__label-row--fill">Разработка</div>
+          <div class="table__label-row table__label-row--fill">Установка</div>
+          <div class="table__label-row table__label-row--fill">Настройка</div>
+          <div class="table__label-row table__label-row--fill table__label-row--wide">Ограничения</div>
+        </div>
       </div>
 
       <div class="table__values">
-        <table class="data-table" style="flex-grow:324">
-          <thead>
-            <tr>
-              <th><div class="data-table__head-pill">Модуль переноса<br>Почтовых сообщений</div></th>
-              <th><div class="data-table__head-pill">Модуль синхронизации<br>учетных записей</div></th>
-              <th><div class="data-table__head-pill">Модуль переноса<br>групп рассылок</div></th>
-              <th><div class="data-table__head-pill">Модуль переноса<br>личных контактов</div></th>
-              <th><div class="data-table__head-pill">Модуль переноса<br>календарных событий</div></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="height:100px">
-              <td>IMAP для доступа<br>в исходную и целевую системы</td>
-              <td colspan="2">
+        <div class="table__groups">
+          <div class="table__group table__group--single">
+            <div class="table__group-head">
+              <div class="data-table__head-pill">Модуль переноса<br>Почтовых сообщений</div>
+            </div>
+            <div class="table__group-body">
+              <div class="table__group-row" style="height:100px">IMAP для доступа<br>в исходную и целевую системы</div>
+              <div class="table__group-row" style="height:112px">Возможность запуска<br>в многопоточном режиме<br>Детальное протоколирование работы</div>
+              <div class="table__group-row" style="height:112px">Скорость переноса<br>500 и более сообщений<br>в секунду</div>
+            </div>
+          </div>
+
+          <div class="table__group table__group--double">
+            <div class="table__group-head">
+              <div class="data-table__head-pill">Модуль синхронизации<br>учетных записей</div>
+              <div class="data-table__head-pill">Модуль переноса<br>групп рассылок</div>
+            </div>
+            <div class="table__group-body">
+              <div class="table__group-row" style="height:100px">
                 Синхронизация по протоколу LDAP<br>
                 Один или несколько LDAP-каталогов<br>
                 Поддержка как LDAP так и LDAPS<br>
                 Направление из LDAP-каталога в CGP
-              </td>
-              <td colspan="2">
-                <ul>
-                  <li>XIMSS — для доступа в целевую систему</li>
-                  <li>EWS — для доступа в исходную систему</li>
-                </ul>
-              </td>
-            </tr>
-            <tr style="height:112px">
-              <td>Возможность запуска<br>в многопоточном режиме<br>Детальное протоколирование работы</td>
-              <td colspan="2">
+              </div>
+              <div class="table__group-row" style="height:112px">
                 <ul>
                   <li>Синхронизация вносимых изменений</li>
                   <li>Выбор мастер-каталога для каждой учетной записи</li>
                   <li>Возможность тонкой настройки соответствия атрибутов</li>
                 </ul>
-              </td>
-              <td>Односторонний<br>и разовый перенос</td>
-              <td>Двухсторонняя и постоянная синхронизация при переносе событий, задач, переговорок</td>
-            </tr>
-            <tr style="height:112px">
-              <td>Скорость переноса<br>500 и более сообщений<br>в секунду</td>
-              <td>Скорость обработки<br>10 000 учетных записей в час</td>
-              <td>Скорость переноса<br>более 100 групп в час</td>
-              <td>Скорость переноса<br>в среднем 10 контактов в секунду</td>
-              <td>Скорость синхронизации более 10 событий в секунду</td>
-            </tr>
-          </tbody>
-        </table>
+              </div>
+              <div class="table__group-row table__group-row--split" style="height:112px">
+                <div>Скорость обработки<br>10 000 учетных записей в час</div>
+                <div>Скорость переноса<br>более 100 групп в час</div>
+              </div>
+            </div>
+          </div>
 
-        <div class="table__bar" style="flex-grow:65">Работа на российских ОС</div>
-        <div class="table__bar" style="flex-grow:65">Собственная разработка на C++</div>
-        <div class="table__bar" style="flex-grow:65">Установка простым копированием или пакетом</div>
-        <div class="table__bar" style="flex-grow:65">Настройка через файл</div>
+          <div class="table__group table__group--double">
+            <div class="table__group-head">
+              <div class="data-table__head-pill">Модуль переноса<br>личных контактов</div>
+              <div class="data-table__head-pill">Модуль переноса<br>календарных событий</div>
+            </div>
+            <div class="table__group-body">
+              <div class="table__group-row" style="height:100px">
+                <ul>
+                  <li>XIMSS — для доступа в целевую систему</li>
+                  <li>EWS — для доступа в исходную систему</li>
+                </ul>
+              </div>
+              <div class="table__group-row table__group-row--split" style="height:112px">
+                <div>Односторонний<br>и разовый перенос</div>
+                <div>Двухсторонняя и постоянная синхронизация при переносе событий, задач, переговорок</div>
+              </div>
+              <div class="table__group-row table__group-row--split" style="height:112px">
+                <div>Скорость переноса<br>в среднем 10 контактов в секунду</div>
+                <div>Скорость синхронизации более 10 событий в секунду</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-        <div class="table__bar" style="flex-grow:67; padding:0;">
+        <div class="table__bar">Работа на российских ОС</div>
+        <div class="table__bar">Собственная разработка на C++</div>
+        <div class="table__bar">Установка простым копированием или пакетом</div>
+        <div class="table__bar">Настройка через файл</div>
+
+        <div class="table__bar table__bar--restrictions">
           <div class="table__bar-cols">
             <div class="is-muted">—</div>
             <div class="is-muted span-2">—</div>
