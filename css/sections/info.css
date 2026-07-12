@@ -2,7 +2,10 @@
   display: flex;
   gap: var(--sp-8);
   align-items: stretch;
-  max-width: var(--container-width);
+  /* Padding sits inside this box (border-box), so widen the box by the padding
+     to keep the content column equal to the standard --container-width used by
+     every other content section (Data, Speed, Graph, …). */
+  max-width: calc(var(--container-width) + 2 * var(--container-pad));
   margin: 0 auto;
   padding: var(--sp-48) var(--container-pad);
 }
