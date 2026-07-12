@@ -40,10 +40,10 @@
   line-height: 1.4;
 }
 
-/* Numbered section headings (20px SemiBold). */
-.legal__heading {
-  font-size: var(--fs-body-20);
-  font-weight: 600;
+/* Numbered section headings (18px Bold). */
+.legal__body .legal__heading {
+  font-size: var(--fs-body-18);
+  font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.01em;
   margin-top: var(--sp-24);
@@ -54,7 +54,7 @@
 }
 
 /* Sub-labels (18px Medium) — e.g. criticality levels in the Reglament. */
-.legal__subhead {
+.legal__body .legal__subhead {
   font-size: var(--fs-body-18);
   font-weight: 500;
   line-height: 1.6;
