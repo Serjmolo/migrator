@@ -2,13 +2,11 @@
   const stage = document.getElementById('videoStage');
   if (!stage) return;
 
-  // TODO: replace poster/src with real files once supplied — array-driven, one entry per video.
+  // Array-driven, one entry per video. Title matches the caption shown under the clip.
   const videos = [
-    { title: 'Перенос календарного события из Microsoft Exchange в CommuniGate Pro', poster: 'assets/images/video/video-poster.png', src: '' },
-    { title: 'Миграция почтовых сообщений и вложений', poster: 'assets/images/video/video-poster.png', src: '' },
-    { title: 'Синхронизация учётных записей через LDAP', poster: 'assets/images/video/video-poster.png', src: '' },
-    { title: 'Перенос групп рассылки и личных контактов', poster: 'assets/images/video/video-poster.png', src: '' },
-    { title: 'Настройка переговорных комнат и просмотр занятости', poster: 'assets/images/video/video-poster.png', src: '' }
+    { title: 'Перенос календарного события из Microsoft Exchange в CommuniGate Pro', poster: 'assets/images/video/video-poster.png', src: 'assets/video/Перенос календарного события из Microsoft Exchange в CommuniGate Pro.mp4' },
+    { title: 'Перенос календарного события из CommuniGate Pro в Microsoft Exchange', poster: 'assets/images/video/video-poster.png', src: 'assets/video/Перенос календарного события из CommuniGate Pro в Microsoft Exchange.mp4' },
+    { title: 'Синхронизация графика занятости в двух почтовых системах', poster: 'assets/images/video/video-poster.png', src: 'assets/video/Синхронизация графика занятости в двух почтовых системах.mp4' }
   ];
 
   let current = 0;
@@ -39,10 +37,26 @@
     render();
   }
 
+  function openCurrent() {
+    const src = videos[current].src;
+    if (src) window.open(encodeURI(src), '_blank', 'noopener');
+  }
+
   document.getElementById('videoPrevBtn').addEventListener('click', () => goTo(current - 1));
   document.getElementById('videoNextBtn').addEventListener('click', () => goTo(current + 1));
   slides.prev.addEventListener('click', () => goTo(current - 1));
   slides.next.addEventListener('click', () => goTo(current + 1));
+
+  const playBtn = stage.querySelector('.video__play');
+  if (playBtn) {
+    playBtn.addEventListener('click', openCurrent);
+    playBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openCurrent();
+      }
+    });
+  }
 
   render();
 })();
