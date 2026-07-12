@@ -1,0 +1,80 @@
+/* Legal document pages (License, Reglament) — solid header, left-aligned title,
+   single text column (~847px wide, matching the pr-513 text frame in Figma). */
+
+.legal {
+  /* Clear the fixed 80px header, then the 96px top inset from the Figma COST frame. */
+  padding-top: calc(5rem + var(--sp-96));
+  padding-bottom: var(--sp-96);
+}
+
+.legal__inner {
+  width: var(--container-width);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-48);
+}
+
+.legal__title {
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.legal__body {
+  /* 847px text column from Figma (1360 − 513px right pad). */
+  max-width: 52.9375rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-8);
+  color: var(--text-primary);
+}
+
+.legal__body p {
+  font-size: var(--fs-body-16);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* Numbered section headings (20px SemiBold). */
+.legal__heading {
+  font-size: var(--fs-body-20);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-top: var(--sp-24);
+}
+
+.legal__body > .legal__heading:first-child {
+  margin-top: 0;
+}
+
+/* Sub-labels (18px Medium) — e.g. criticality levels in the Reglament. */
+.legal__subhead {
+  font-size: var(--fs-body-18);
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: -0.006em;
+  margin-top: var(--sp-16);
+}
+
+/* Dashed list items — hanging indent so wrapped lines align past the dash. */
+.legal__dash {
+  padding-left: var(--sp-24);
+  text-indent: calc(-1 * var(--sp-24));
+}
+
+.legal__body a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  word-break: break-word;
+}
+
+.legal__body a:hover {
+  color: var(--text-link);
+}
