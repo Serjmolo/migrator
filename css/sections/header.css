@@ -1,18 +1,29 @@
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 5;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: var(--sp-20) var(--content-inset);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.header__logo {
+  display: block;
+  line-height: 0;
 }
 
 .header__logo img {
   height: 2.43rem; /* 38.8px */
   width: auto;
+}
+
+/* White logo over the hero, navy logo once the header goes solid */
+.header__logo-dark {
+  display: none;
 }
 
 .header__menu {
@@ -25,8 +36,32 @@
   letter-spacing: -0.006em;
   color: var(--text-inverse);
   white-space: nowrap;
+  transition: color 0.25s ease;
 }
 
 .header__menu a:hover {
   color: var(--surface-neon);
+}
+
+/* Solid state once the page is scrolled away from the hero (Figma HeaderScroll 296:1324) */
+.header--scrolled {
+  background-color: var(--surface-white);
+  box-shadow: 0 1px 12px rgba(0, 19, 49, 0.08);
+}
+
+.header--scrolled .header__logo-light {
+  display: none;
+}
+
+.header--scrolled .header__logo-dark {
+  display: block;
+}
+
+.header--scrolled .header__menu {
+  color: var(--text-primary);
+}
+
+.header--scrolled .btn--secondary {
+  background: var(--ui-primary);
+  color: var(--text-inverse);
 }
