@@ -28,9 +28,5 @@
 }
 
 .header__menu a:hover {
-  opacity: 0.8;
-}
-
-.header__menu a.is-active {
   color: var(--surface-neon);
 }

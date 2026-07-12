@@ -114,7 +114,7 @@
 
 		// Обновляем заголовок длительности
 		const durationLabel = document.getElementById('durationLabel');
-		durationLabel.textContent = `Длительность (при работе ${activeHoursPerDay} часов в день)`;
+		durationLabel.innerHTML = `Длительность<br>(при работе ${activeHoursPerDay} часов в день)`;
 
         volumeDisplay.textContent = formatVolume(totalVolumeMB);
         ratioDisplay.textContent = (ratio * 100).toFixed(1) + '%';
@@ -173,10 +173,24 @@
 
     }
 
+    // ---- Заливка трека слайдера синим цветом до положения ручки ----
+    function updateRangeFill(slider) {
+        const min = parseFloat(slider.min) || 0;
+        const max = parseFloat(slider.max) || 100;
+        const value = parseFloat(slider.value);
+        const percent = ((value - min) / (max - min)) * 100;
+        slider.style.setProperty('--fill', percent + '%');
+    }
+
+    function handleSliderInput(event) {
+        updateRangeFill(event.target);
+        calculate();
+    }
+
     // Добавляем слушатели событий
-    volumeSlider.addEventListener('input', calculate);
-    ratioSlider.addEventListener('input', calculate);
-    hoursPerDaySlider.addEventListener('input', calculate);
+    volumeSlider.addEventListener('input', handleSliderInput);
+    ratioSlider.addEventListener('input', handleSliderInput);
+    hoursPerDaySlider.addEventListener('input', handleSliderInput);
 
     if (factorSATA) factorSATA.addEventListener('change', calculate);
     if (factorAntivirus) factorAntivirus.addEventListener('change', calculate);
@@ -185,5 +199,8 @@
     // Начальные значения
     volumeSlider.value = 25;
     hoursPerDaySlider.value = 24;
+    updateRangeFill(volumeSlider);
+    updateRangeFill(ratioSlider);
+    updateRangeFill(hoursPerDaySlider);
     calculate();
 })();

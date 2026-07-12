@@ -49,18 +49,8 @@
 .cost__price {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: var(--sp-4);
-  text-align: center;
-}
-
-.cost__card--blue .cost__price,
-.cost__card--orange .cost__price {
-  align-items: center;
-}
-
-.cost__card--purple .cost__price {
   align-items: flex-start;
+  gap: var(--sp-4);
   text-align: left;
 }
 
@@ -80,7 +70,7 @@
 .cost__buy {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--sp-24);
   width: 100%;
 }
@@ -88,7 +78,7 @@
 .cost__buy-actions {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--sp-16);
   width: 100%;
 }

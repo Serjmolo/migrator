@@ -32,6 +32,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: var(--sp-32) 0;
   padding: var(--sp-32) 0;
   font-size: var(--fs-body-18);
   line-height: 1.6;
