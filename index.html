@@ -173,7 +173,7 @@
       </div>
 
       <div class="graph__connectors">
-        <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">IMAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge graph__badge--strong">IMAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
         <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">LDAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
         <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">LDAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
         <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">EWS</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
@@ -187,7 +187,7 @@
       </div>
 
       <div class="graph__connectors">
-        <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">IMAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge graph__badge--strong">IMAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
         <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">LDAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
         <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">LDAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
         <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">XIMSS</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
@@ -196,7 +196,7 @@
         <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">XIMSS</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
       </div>
 
-      <div class="graph__block">
+      <div class="graph__block graph__block--reverse">
         <div class="graph__row">
           <div class="graph__item">Почтовые сообщения</div>
           <div class="graph__item">Учетные записи</div>
@@ -363,24 +363,26 @@
 
   <section class="info section">
     <div class="info__text">
-      <h2>Требования к инфраструктуре</h2>
-      <div class="info__columns">
-        <div class="info__col">
-          <p class="info__col-title">Один выделенный сервер</p>
-          <ul>
-            <li>8-ми ядерный процессор</li>
-            <li>32 ГБ оперативной памяти</li>
-            <li>2 накопителя по 250 ГБ</li>
-            <li>Российская операционная система актуальной версии</li>
-          </ul>
-        </div>
-        <div class="info__col">
-          <p class="info__col-title">Сетевые настройки</p>
-          <ul>
-            <li>Открытые порты для доступа к исходной системе</li>
-            <li>Открытые порты для доступа к целевой системе</li>
-            <li>Открыт порт SSH для доступа к серверу</li>
-          </ul>
+      <div class="info__content">
+        <h2>Требования к инфраструктуре</h2>
+        <div class="info__columns">
+          <div class="info__col">
+            <p class="info__col-title">Один выделенный сервер</p>
+            <ul>
+              <li>8-ми ядерный процессор</li>
+              <li>32 ГБ оперативной памяти</li>
+              <li>2 накопителя по 250 ГБ</li>
+              <li>Российская операционная система актуальной версии</li>
+            </ul>
+          </div>
+          <div class="info__col">
+            <p class="info__col-title">Сетевые настройки</p>
+            <ul>
+              <li>Открытые порты для доступа к исходной системе</li>
+              <li>Открытые порты для доступа к целевой системе</li>
+              <li>Открыт порт SSH для доступа к серверу</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="info__buttons">
@@ -526,8 +528,10 @@
             <p class="cost__price-value">300 ₽</p>
             <p class="cost__price-note">(вкл. НДС 22%)</p>
           </div>
-          <a class="btn btn--primary btn--block" href="#form">Купить</a>
-          <a class="cost__link" href="#form">Лицензионная программа</a>
+          <div class="cost__buy-actions">
+            <a class="btn btn--primary btn--block" href="#form">Купить</a>
+            <a class="cost__link" href="#form">Лицензионная программа</a>
+          </div>
         </div>
       </div>
 
@@ -541,8 +545,10 @@
             <p class="cost__price-value">170 000 ₽</p>
             <p class="cost__price-note">(вкл. НДС 22%)</p>
           </div>
-          <a class="btn btn--primary btn--block" href="#form">Купить</a>
-          <a class="cost__link cost__link--hidden" href="#form">Лицензионная программа</a>
+          <div class="cost__buy-actions">
+            <a class="btn btn--primary btn--block" href="#form">Купить</a>
+            <a class="cost__link cost__link--hidden" href="#form">Лицензионная программа</a>
+          </div>
         </div>
       </div>
 
@@ -556,8 +562,10 @@
             <p class="cost__price-value">300 ₽</p>
             <p class="cost__price-note">(вкл. НДС 22%)</p>
           </div>
-          <a class="btn btn--primary btn--block" href="#form">Купить</a>
-          <a class="cost__link" href="#form">Регламент технической поддержки</a>
+          <div class="cost__buy-actions">
+            <a class="btn btn--primary btn--block" href="#form">Купить</a>
+            <a class="cost__link" href="#form">Регламент технической поддержки</a>
+          </div>
         </div>
       </div>
     </div>

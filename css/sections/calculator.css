@@ -43,6 +43,7 @@
 .calc__cell-value {
   font-size: var(--fs-body-24);
   font-weight: 600;
+  line-height: 1.2;
   letter-spacing: -0.01em;
   color: var(--text-primary);
   text-align: center;
@@ -147,7 +148,7 @@
   flex-direction: column;
   gap: var(--sp-8);
   background: var(--surface-white);
-  border-radius: var(--radius-16);
+  border-radius: 0.625rem;
   padding: var(--sp-8);
 }
 
@@ -178,7 +179,8 @@
 .calc__panel-item p:last-child {
   font-size: var(--fs-body-24);
   font-weight: 600;
-  letter-spacing: -0.015em;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
 }
 

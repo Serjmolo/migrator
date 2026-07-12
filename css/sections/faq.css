@@ -71,7 +71,7 @@
 }
 
 .faq__answer {
-  margin: var(--sp-16) 0 0;
+  margin: var(--sp-8) 0 0;
   font-size: var(--fs-body-16);
   line-height: 1.4;
   color: var(--ui-primary);
