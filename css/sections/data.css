@@ -1,0 +1,40 @@
+.data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-48);
+  padding: var(--sp-96) var(--container-pad) var(--sp-48);
+}
+
+.data__grid {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--container-width);
+  gap: var(--sp-8);
+}
+
+.data__item {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-12);
+  min-width: 0;
+}
+
+.data__icon img {
+  width: 9rem; /* 144px, badge + background baked into the export */
+  height: 9rem;
+}
+
+.data__item p {
+  font-size: var(--fs-body-20);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  text-align: center;
+}

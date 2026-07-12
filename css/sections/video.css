@@ -1,0 +1,131 @@
+.video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-48);
+  padding: var(--sp-96) var(--container-pad);
+  background: var(--surface-dark-blue);
+  border-radius: var(--radius-24);
+}
+
+.video__stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 23.75rem; /* 380px */
+}
+
+.video__slide {
+  position: absolute;
+  top: 50%;
+  border-radius: var(--radius-12);
+  overflow: hidden;
+  border: 1px solid var(--surface-blue);
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+.video__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video__slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 19, 49, 0.6);
+}
+
+.video__slide[data-role="active"] {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42.25rem; /* 676px */
+  height: 23.75rem; /* 380px */
+  z-index: 3;
+  cursor: default;
+}
+
+.video__slide[data-role="prev"] {
+  left: 0;
+  transform: translateY(-50%);
+  width: 22rem; /* 352px */
+  height: 17.5rem; /* 280px */
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.video__slide[data-role="next"] {
+  left: auto;
+  right: 0;
+  transform: translateY(-50%);
+  width: 22rem; /* 352px */
+  height: 17.5rem; /* 280px */
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.video__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem; /* 72px */
+  height: 4.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 4;
+}
+
+.video__play svg {
+  width: 3rem;
+  height: 3rem;
+}
+
+.video__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 42.25rem; /* 676px, matches active slide */
+  max-width: 100%;
+  padding-left: var(--sp-16);
+}
+
+.video__caption {
+  font-size: var(--fs-body-16);
+  line-height: 1.4;
+  color: var(--text-inverse);
+}
+
+.video__nav {
+  display: flex;
+  gap: var(--sp-8);
+  flex-shrink: 0;
+}
+
+.video__nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem; /* 40px */
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--surface-blue);
+  background: transparent;
+  color: var(--text-inverse);
+}
+
+.video__nav-btn:hover {
+  background: var(--surface-blue-opacity);
+}
+
+.video__nav-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}

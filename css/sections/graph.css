@@ -1,0 +1,134 @@
+.graph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-48);
+  padding: var(--sp-96) var(--container-pad);
+  background: var(--surface-dark-blue);
+  border-radius: var(--radius-24);
+}
+
+.graph__diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+}
+
+.graph__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-16);
+  padding: var(--sp-24) var(--sp-24) var(--sp-16);
+  border-radius: var(--radius-12);
+  background: var(--surface-blue-opacity);
+  border: 2px dashed var(--surface-blue);
+}
+
+.graph__block-title {
+  font-size: var(--fs-body-20);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-inverse);
+  text-align: center;
+}
+
+.graph__block-title strong {
+  font-weight: 600;
+}
+
+.graph__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  width: 100%;
+}
+
+.graph__item {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--sp-8) var(--sp-24);
+  border: 1px dashed var(--surface-blue);
+  border-radius: var(--radius-12);
+  font-size: var(--fs-body-14);
+  font-weight: 500;
+  color: var(--text-inverse);
+  text-align: center;
+}
+
+.graph__core {
+  padding: var(--sp-16) var(--sp-24);
+  border-radius: var(--radius-12);
+  background: var(--surface-neon-opacity);
+  border: 2px solid var(--surface-neon);
+}
+
+.graph__core-title {
+  font-size: var(--fs-body-20);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--surface-neon);
+  text-align: center;
+}
+
+.graph__connectors {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-8);
+  padding: 0 5.625rem; /* 90px */
+}
+
+.graph__connector {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.graph__connector-line {
+  width: 2px;
+  height: 1.5rem; /* 24px, split above/below badge for a 2x40px total span */
+  background: var(--surface-blue);
+  position: relative;
+}
+
+.graph__connector-line::before,
+.graph__connector-line::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  transform: translateX(-50%);
+}
+
+.graph__connector-line--top::before {
+  top: -1px;
+  border-bottom: 7px solid var(--surface-blue);
+}
+
+.graph__connector-line--bottom::after {
+  bottom: -1px;
+  border-top: 7px solid var(--surface-blue);
+}
+
+.graph__badge {
+  padding: var(--sp-8);
+  width: 3.75rem; /* 60px */
+  text-align: center;
+  border-radius: var(--radius-12);
+  background: var(--surface-blue);
+  color: var(--text-inverse);
+  font-size: var(--fs-body-14);
+  font-weight: 600;
+  margin: 0.25rem 0;
+}

@@ -1,0 +1,73 @@
+:root {
+  /* ---- Fluid scale: 1rem = 16px at the 1440px Figma design width ----
+     clamp floor = 16px * (1200/1440), ceiling = 16px * (1920/1440) */
+  --scale-vw: 1.11111vw;
+
+  /* ---- Text colors ---- */
+  --text-primary: #001331;
+  --text-secondary: #627687;
+  --text-tertiary: #849eb5;
+  --text-inverse: #ffffff;
+  --text-link: #2351e7;
+
+  /* ---- Surfaces ---- */
+  --surface-white: #ffffff;
+  --surface-light-blue-01: #f0f6ff;
+  --surface-light-blue-02: #e6f0ff;
+  --surface-dark-blue: #001331;
+  --surface-purple-01: #efdfff;
+  --surface-orange: #fbede6;
+  --surface-yellow: #fff9e7;
+  --surface-blue: #2351e7;
+  --surface-blue-opacity: #2351e71a;
+  --surface-neon: #5ae6ff;
+  --surface-neon-opacity: #5ae6ff1a;
+
+  /* ---- UI controls ---- */
+  --ui-primary: #001331;
+  --ui-secondary: #ffffff;
+  --ui-tertiary: #849eb5;
+  --ui-disable: #cdd3e3;
+
+  /* ---- Type scale (px ÷ 16 = rem) ---- */
+  --fs-h1: 4rem;        /* 64px */
+  --fs-h2: 2.5rem;      /* 40px */
+  --fs-lead: 1.25rem;   /* 20px */
+  --fs-numbers: 3.75rem;/* 60px */
+  --fs-body-24: 1.5rem; /* 24px */
+  --fs-body-20: 1.25rem;/* 20px */
+  --fs-body-18: 1.125rem;/* 18px */
+  --fs-body-16: 1rem;   /* 16px */
+  --fs-body-14: 0.875rem;/* 14px */
+  --fs-ui-m: 1rem;      /* 16px */
+  --fs-ui-xs: 0.875rem; /* 14px */
+  --fs-ui-s: 0.75rem;   /* 12px */
+
+  /* ---- Spacing scale (px ÷ 16 = rem) ---- */
+  --sp-4: 0.25rem;
+  --sp-8: 0.5rem;
+  --sp-12: 0.75rem;
+  --sp-16: 1rem;
+  --sp-20: 1.25rem;
+  --sp-24: 1.5rem;
+  --sp-32: 2rem;
+  --sp-40: 2.5rem;
+  --sp-48: 3rem;
+  --sp-96: 6rem;
+  --sp-120: 7.5rem;
+
+  /* ---- Radii ---- */
+  --radius-12: 0.75rem;
+  --radius-16: 1rem;
+  --radius-24: 1.5rem;
+  --radius-40: 2.5rem;
+  --radius-64: 4rem;
+
+  /* ---- Layout ---- */
+  --container-width: 90rem; /* 1440px at 1:1 scale */
+  --container-pad: 2.5rem; /* 40px */
+}
+
+html {
+  font-size: clamp(13.333px, var(--scale-vw), 21.333px);
+}

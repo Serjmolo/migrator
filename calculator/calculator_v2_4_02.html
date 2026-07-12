@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Калькулятор миграции сообщений</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+        body {
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 16px;
+        }
+        .calculator {
+            max-width: 950px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+            padding: 16px 20px 24px;
+            transition: all 0.2s;
+        }
+        h1 {
+            font-size: 1.9rem;
+            margin: 0 0 4px 0;
+            color: #0f172a;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        .sub {
+            color: #475569;
+            margin-bottom: 24px;
+            border-left: 4px solid #3b82f6;
+            padding-left: 14px;
+            font-size: 0.85rem;
+        }
+        .card {
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 4px 16px;
+            margin-bottom: 20px;
+            transition: all 0.2s;
+        }
+        .param-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        .param-value {
+            color: #3b82f6;
+            background: #eef2ff;
+            padding: 2px 10px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+        }
+        input[type="range"] {
+            width: 100%;
+            height: 5px;
+            -webkit-appearance: none;
+            background: #e2e8f0;
+            border-radius: 10px;
+            margin: 12px 0 6px;
+        }
+        input[type="range"]:focus {
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #3b82f6;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            border: 2px solid white;
+        }
+        .range-hint {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.65rem;
+            color: #64748b;
+            margin-top: 2px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+        .info-label {
+            font-weight: 600;
+            color: #334155;
+        }
+        .info-value {
+            font-weight: 700;
+            color: #0f172a;
+            font-family: monospace;
+            font-size: 0.95rem;
+        }
+        .result-block {
+            background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%);
+            border-radius: 24px;
+            padding: 12px 16px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .result-item {
+            margin: 4px 0;
+        }
+        .result-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #475569;
+            font-weight: 600;
+        }
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0f172a;
+            font-family: monospace;
+            letter-spacing: 1px;
+        }
+        .unit {
+            font-size: 0.85rem;
+            font-weight: normal;
+            color: #475569;
+        }
+        .constant-note {
+            background: #f1f5f9;
+            border-left: 3px solid #3b82f6;
+            padding: 4px 8px;
+            border-radius: 16px;
+            font-size: 0.7rem;
+            color: #1e40af;
+            margin-top: 10px;
+        }
+        .workdays-detail {
+            background: #fefce8;
+            border-radius: 16px;
+            padding: 6px 10px;
+            margin: 0;
+            font-size: 0.75rem;
+            text-align: left;
+            border-left: 3px solid #eab308;
+            width: auto;
+            box-sizing: border-box;
+        }
+        .workdays-detail span {
+            font-weight: 700;
+            color: #854d0e;
+        }
+        .results-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            gap: 20px;
+            margin: 0 0 12px 0;
+        }
+        .results-row .result-item {
+            flex: 1;
+            margin: 0;
+            min-width: 0;
+        }
+        .bottom-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-top: 4px;
+        }
+        .speed-wrapper {
+            flex: 1;
+            text-align: center;
+        }
+        .detail-wrapper {
+            flex: 1;
+            text-align: left;
+        }
+        @media (max-width: 700px) {
+            body { padding: 12px; }
+            .calculator { padding: 12px 14px 18px; }
+            .result-value { font-size: 1.1rem; }
+            .results-row { gap: 10px; }
+            .bottom-row { flex-direction: column; gap: 10px; }
+            .workdays-detail { font-size: 0.65rem; }
+            .card { padding: 4px 12px; margin-bottom: 14px; }
+            h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="calculator">
+    <h1>📬 Миграция сообщений</h1>
+    <div class="sub">Оцените время переноса почты (зависимость скорости миграции от размера сообщений)</div>
+
+    <!-- Ползунок: общий объём -->
+    <div class="card">
+        <div class="param-label">
+            <span>📦 Общий объём сообщений</span>
+            <span class="param-value" id="volumeDisplay">1.00 МБ</span>
+        </div>
+        <input type="range" id="volumeSlider" min="0" max="100" step="0.01" value="0">
+        <div class="range-hint">
+            <span>1 МБ</span>
+            <span>1 ТБ</span>
+            <span>100 ТБ</span>
+            <span>350 ТБ</span>
+            <span>700 ТБ</span>
+        </div>
+        <div class="range-hint" style="margin-top: 0;">
+            <span>|</span><span>|</span><span>|</span><span>|</span><span>|</span>
+        </div>
+    </div>
+
+    <!-- Ползунок: доля писем с вложениями -->
+    <div class="card">
+        <div class="param-label">
+            <span>📎 Доля писем с вложениями</span>
+            <span class="param-value" id="ratioDisplay">0.0%</span>
+        </div>
+        <input type="range" id="ratioSlider" min="0" max="100" step="0.1" value="0">
+        <div class="range-hint">
+            <span>0% (все без вложений)</span>
+            <span>100% (все с вложениями)</span>
+        </div>
+        <div class="constant-note">
+            📐 Средний условный размер сообщений:<br>
+            • Без вложений: <strong>32 КБ</strong> (0,031226 МБ)<br>
+            • С вложениями: <strong>1,5 МБ</strong> (1,449 МБ)
+        </div>
+    </div>
+
+    <!-- Ползунок: количество часов в сутки -->
+    <div class="card">
+        <div class="param-label">
+            <span>⏰ Часов в сутки на миграцию</span>
+            <span class="param-value" id="hoursPerDayDisplay">24 ч</span>
+        </div>
+        <input type="range" id="hoursPerDaySlider" min="1" max="24" step="1" value="24">
+        <div class="range-hint">
+            <span>1 ч/сутки</span>
+            <span>12 ч/сутки</span>
+            <span>24 ч/сутки</span>
+        </div>
+        <div class="constant-note">
+            🕒 По умолчанию миграция идёт 24 часа в сутки. При сокращении рабочих часов общее календарное время увеличивается пропорционально.
+        </div>
+    </div>
+
+    <!-- Информационные блоки -->
+    <div class="card" style="background: white; padding: 6px 12px;">
+        <div class="info-row">
+            <span class="info-label">📏 Средний размер сообщения</span>
+            <span class="info-value" id="avgSizeInfo">— МБ</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">📨 Общее количество сообщений</span>
+            <span class="info-value" id="totalCountInfo">— шт</span>
+        </div>
+    </div>
+
+    <!-- Результаты -->
+    <div class="result-block">
+        <div class="results-row">
+            <div class="result-item">
+                <div class="result-label" id="durationLabel">⏱️ Длительность при работе 24 часа в день</div>
+                <div class="result-value" id="migrationTime">00:00:00</div>
+            </div>
+            <div class="result-item">
+                <div class="result-label" id="workDaysLabel">📅 Рабочих дней (по 24 ч/день)</div>
+                <div class="result-value" id="workDaysValue">0</div>
+            </div>
+        </div>
+        
+        <div class="bottom-row">
+            <div class="speed-wrapper">
+                <div class="result-label">⚡ Скорость миграции</div>
+                <div class="result-value" id="migrationSpeed">0 <span class="unit">писем/сек</span></div>
+            </div>
+            <div class="detail-wrapper">
+                <div class="workdays-detail">
+                    <div style="margin-bottom: 8px; font-weight: 700;">📌 Факторы, влияющие на скорость миграции:</div>
+                    <div style="font-size: 0.8rem;">
+                        <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; cursor: pointer;">
+                            <input type="checkbox" id="factorSATA"> 
+                            <span>💾 дисковая система SATA <span style="color: #854d0e;">(+40% времени)</span></span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; cursor: pointer;">
+                            <input type="checkbox" id="factorAntivirus"> 
+                            <span>🛡️ антивирус на целевом сервере <span style="color: #854d0e;">(+30% времени)</span></span>
+                        </label>
+                        <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px; cursor: pointer;">
+                            <input type="checkbox" id="factorSZI" disabled> 
+                            <span>🔒 наличие СЗИ <span style="color: #854d0e;">(индивидуальный расчёт)</span></span>
+                        </label>
+                    </div>
+                    <div style="font-size: 0.7rem; color: #64748b; margin-top: 8px; padding-top: 6px; border-top: 1px dashed #eab308;">
+                        ⚡ Время миграции корректируется с учётом выбранных факторов
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ---------- ФИКСИРОВАННЫЕ КОНСТАНТЫ ----------
+        const MB_TO_BYTES = 1048576;
+        const AVG_SIZE_NO_BYTES = 32740;
+        const AVG_SIZE_ATT_BYTES = 1519608;
+        const AVG_SIZE_NO_MB = AVG_SIZE_NO_BYTES / MB_TO_BYTES;
+        const AVG_SIZE_ATT_MB = AVG_SIZE_ATT_BYTES / MB_TO_BYTES;
+        
+        const SPEED_NO_MBPS = 19905 / 1200;
+        const SPEED_ATT_MBPS = 19451 / 180;
+        
+        // ----- КАСТОМНАЯ ЛОГАРИФМИЧЕСКАЯ ШКАЛА -----
+        const CALIBRATION_POINTS = [
+            { pos: 0,   volumeMB: 1 },
+            { pos: 25,  volumeMB: 1024 * 1024 },
+            { pos: 50,  volumeMB: 100 * 1024 * 1024 },
+            { pos: 75,  volumeMB: 350 * 1024 * 1024 },
+            { pos: 100, volumeMB: 700 * 1024 * 1024 }
+        ];
+        
+        function findSegment(pos) {
+            for (let i = 0; i < CALIBRATION_POINTS.length - 1; i++) {
+                if (pos >= CALIBRATION_POINTS[i].pos && pos <= CALIBRATION_POINTS[i+1].pos) {
+                    return { left: CALIBRATION_POINTS[i], right: CALIBRATION_POINTS[i+1] };
+                }
+            }
+            return { left: CALIBRATION_POINTS[0], right: CALIBRATION_POINTS[CALIBRATION_POINTS.length-1] };
+        }
+        
+        function sliderToVolume(sliderPos) {
+            let seg = findSegment(sliderPos);
+            let t = (sliderPos - seg.left.pos) / (seg.right.pos - seg.left.pos);
+            let logLeft = Math.log10(seg.left.volumeMB);
+            let logRight = Math.log10(seg.right.volumeMB);
+            let logVolume = logLeft + t * (logRight - logLeft);
+            return Math.pow(10, logVolume);
+        }
+        
+        function formatVolume(megabytes) {
+            if (megabytes < 1024) return megabytes.toFixed(2) + ' МБ';
+            if (megabytes < 1024 * 1024) return (megabytes / 1024).toFixed(2) + ' ГБ';
+            return (megabytes / (1024 * 1024)).toFixed(2) + ' ТБ';
+        }
+        
+        function formatEmailsWord(count) {
+            if (count % 10 === 1 && count % 100 !== 11) return "письмо";
+            if (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20)) return "письма";
+            return "писем";
+        }
+        
+        function formatDaysWord(days) {
+            if (days % 10 === 1 && days % 100 !== 11) return "день";
+            if (days % 10 >= 2 && days % 10 <= 4 && (days % 100 < 10 || days % 100 >= 20)) return "дня";
+            return "дней";
+        }
+        
+        function formatTimeDetailed(seconds) {
+            if (isNaN(seconds) || seconds < 0) return "00:00:00";
+            let days = Math.floor(seconds / 86400);
+            let remaining = seconds % 86400;
+            let hours = Math.floor(remaining / 3600);
+            let minutes = Math.floor((remaining % 3600) / 60);
+            let secs = Math.floor(remaining % 60);
+            let hh = hours.toString().padStart(2, '0');
+            let mm = minutes.toString().padStart(2, '0');
+            let ss = secs.toString().padStart(2, '0');
+            if (days > 0) {
+                return `${days} ${formatDaysWord(days)} и ${hh}:${mm}:${ss}`;
+            }
+            return `${hh}:${mm}:${ss}`;
+        }
+        
+        // DOM элементы
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeDisplay = document.getElementById('volumeDisplay');
+        const ratioSlider = document.getElementById('ratioSlider');
+        const ratioDisplay = document.getElementById('ratioDisplay');
+        const avgSizeInfo = document.getElementById('avgSizeInfo');
+        const totalCountInfo = document.getElementById('totalCountInfo');
+        const migrationTimeSpan = document.getElementById('migrationTime');
+        const migrationSpeedSpan = document.getElementById('migrationSpeed');
+        const hoursPerDaySlider = document.getElementById('hoursPerDaySlider');
+        const hoursPerDayDisplay = document.getElementById('hoursPerDayDisplay');
+        const workDaysValueSpan = document.getElementById('workDaysValue');
+        const workDaysLabel = document.getElementById('workDaysLabel');
+        
+        // ---- Факторы миграции (чеки) ----
+        const factorSATA = document.getElementById('factorSATA');
+        const factorAntivirus = document.getElementById('factorAntivirus');
+        const factorSZI = document.getElementById('factorSZI');
+        
+        // Функция для округления рабочих дней вверх
+        function getRoundedWorkDays(totalWorkSeconds, hoursPerDay) {
+            if (hoursPerDay <= 0 || totalWorkSeconds <= 0) return 0;
+            const secondsPerWorkDay = hoursPerDay * 3600;
+            return Math.ceil(totalWorkSeconds / secondsPerWorkDay);
+        }
+        
+        function calculate() {
+            let sliderPos = parseFloat(volumeSlider.value);
+            let totalVolumeMB = sliderToVolume(sliderPos);
+            let ratio = parseFloat(ratioSlider.value) / 100;
+            let activeHoursPerDay = parseInt(hoursPerDaySlider.value, 10);
+            
+            // ---- Расчёт коэффициента замедления от факторов ----
+            let slowdownFactor = 1.0;
+            if (factorSATA && factorSATA.checked) slowdownFactor *= 1.4;
+            if (factorAntivirus && factorAntivirus.checked) slowdownFactor *= 1.3;
+            // Для СЗИ пока используем фиксированный коэффициент, т.к. нет поля ввода
+            if (factorSZI && factorSZI.checked) slowdownFactor *= 1.5;  // +50% по умолчанию
+            
+            hoursPerDayDisplay.textContent = activeHoursPerDay + ' ч';
+            workDaysLabel.textContent = `📅 Рабочих дней (по ${activeHoursPerDay} ч/день)`;
+            
+			// Обновляем заголовок длительности
+			const durationLabel = document.getElementById('durationLabel');
+			durationLabel.textContent = `⏱️ Длительность при работе ${activeHoursPerDay} часов в день`;
+			
+            volumeDisplay.textContent = formatVolume(totalVolumeMB);
+            ratioDisplay.textContent = (ratio * 100).toFixed(1) + '%';
+            
+            if (totalVolumeMB <= 0) {
+                migrationTimeSpan.textContent = '00:00:00';
+                migrationSpeedSpan.innerHTML = '0 <span class="unit">писем/сек</span>';
+                avgSizeInfo.textContent = '— МБ';
+                totalCountInfo.textContent = '— шт';
+                workDaysValueSpan.textContent = '0';
+                return;
+            }
+            
+            // Расчёт количества сообщений
+            let totalCount = totalVolumeMB / (AVG_SIZE_NO_MB * (1 - ratio) + AVG_SIZE_ATT_MB * ratio);
+            let countNo = totalCount * (1 - ratio);
+            let countAtt = totalCount * ratio;
+            
+            let avgSizeMB = (countNo * AVG_SIZE_NO_MB + countAtt * AVG_SIZE_ATT_MB) / totalCount;
+            avgSizeInfo.textContent = avgSizeMB.toFixed(3) + ' МБ (' + (avgSizeMB * MB_TO_BYTES).toFixed(0) + ' байт)';
+            totalCountInfo.textContent = Math.round(totalCount).toLocaleString() + ' шт';
+            
+            let volumeNo = countNo * AVG_SIZE_NO_MB;
+            let volumeAtt = countAtt * AVG_SIZE_ATT_MB;
+            
+            let timeNoSec = volumeNo / SPEED_NO_MBPS;
+            let timeAttSec = volumeAtt / SPEED_ATT_MBPS;
+            let netWorkSeconds = timeNoSec + timeAttSec;  // чистое время при 24 часах в день
+            
+			// Календарное время с учётом рабочих часов и факторов замедления
+			let workSecondsPerDay = activeHoursPerDay * 3600;
+			let totalWorkSeconds = netWorkSeconds * slowdownFactor;  // общее время работы с учётом замедлений
+			
+			// Расчёт календарного времени через полные и неполные дни
+//			if (totalWorkSeconds <= workSecondsPerDay) {
+//				// Процесс укладывается в один рабочий день
+//				calendarSeconds = totalWorkSeconds;
+//			} else {
+//				// Процесс длится больше одного рабочего дня
+//				calendarSeconds = totalWorkSeconds * (24 / activeHoursPerDay);
+//			}            
+			let fullDays = Math.floor(totalWorkSeconds / workSecondsPerDay);
+			let remainingSeconds = totalWorkSeconds % workSecondsPerDay;
+
+			if (remainingSeconds === 0) {
+				// Ровно укладывается в целое количество дней
+				calendarSeconds = fullDays * 24 * 3600;
+			} else {
+				// Нужен ещё один неполный день (в нём будет отработано remainingSeconds часов)
+				calendarSeconds = fullDays * 24 * 3600 + remainingSeconds;
+			}
+
+            let migrationSpeedVal = (totalCount / netWorkSeconds) / slowdownFactor;
+            let roundedSpeed = Math.round(migrationSpeedVal);
+            let speedWord = formatEmailsWord(roundedSpeed);
+            
+            migrationTimeSpan.textContent = formatTimeDetailed(calendarSeconds);
+            migrationSpeedSpan.innerHTML = roundedSpeed.toLocaleString() + ' <span class="unit">' + speedWord + '/сек</span>';
+            
+            // ---- Отображение рабочих дней (округление вверх) ----
+            const roundedWorkDays = getRoundedWorkDays(totalWorkSeconds, activeHoursPerDay);
+            workDaysValueSpan.textContent = roundedWorkDays;
+			
+        }
+        
+        // Добавляем слушатели событий
+        volumeSlider.addEventListener('input', calculate);
+        ratioSlider.addEventListener('input', calculate);
+        hoursPerDaySlider.addEventListener('input', calculate);
+        
+        if (factorSATA) factorSATA.addEventListener('change', calculate);
+        if (factorAntivirus) factorAntivirus.addEventListener('change', calculate);
+        if (factorSZI) factorSZI.addEventListener('change', calculate);
+        
+        // Начальные значения
+        volumeSlider.value = 25;
+        hoursPerDaySlider.value = 24;
+        calculate();
+    })();
+</script>
+</body>
+</html>
