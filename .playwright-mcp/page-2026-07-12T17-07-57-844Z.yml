@@ -1,0 +1,391 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - link "Безант" [ref=f1e3] [cursor=pointer]:
+      - /url: "#top"
+    - navigation [ref=f1e5]:
+      - link "ПК «Мигратор ЭПС»" [ref=f1e6] [cursor=pointer]:
+        - /url: "#data"
+      - link "Схема" [ref=f1e7] [cursor=pointer]:
+        - /url: "#graph"
+      - link "Скорость" [ref=f1e8] [cursor=pointer]:
+        - /url: "#speed"
+      - link "Возможности" [ref=f1e9] [cursor=pointer]:
+        - /url: "#table"
+      - link "Стоимость" [ref=f1e10] [cursor=pointer]:
+        - /url: "#cost"
+    - link "Запросить демо" [ref=f1e11] [cursor=pointer]:
+      - /url: "#form"
+  - main [ref=f1e12]:
+    - generic [ref=f1e15]:
+      - generic [ref=f1e16]:
+        - heading "ПК «Мигратор ЭПС»" [level=1] [ref=f1e17]
+        - paragraph [ref=f1e18]: Быстро и бесшовно перенесите данныеиз Microsoft Exchange в CommuniGate PRO
+      - generic [ref=f1e19]:
+        - link "Запросить демо" [ref=f1e20] [cursor=pointer]:
+          - /url: "#form"
+        - link "Получить презентацию" [ref=f1e21] [cursor=pointer]:
+          - /url: "#form"
+    - generic [ref=f1e22]:
+      - heading "Какие данные могут быть перенесены" [level=2] [ref=f1e23]: Какие данные могутбыть перенесены
+      - generic [ref=f1e24]:
+        - generic [ref=f1e25]:
+          - img "Учётные записи" [ref=f1e27]
+          - paragraph [ref=f1e28]: Учётныезаписи
+        - generic [ref=f1e29]:
+          - img "Группы рассылки" [ref=f1e31]
+          - paragraph [ref=f1e32]: Группырассылки
+        - generic [ref=f1e33]:
+          - img "Почтовые сообщения" [ref=f1e35]
+          - paragraph [ref=f1e36]: Почтовыесообщения
+        - generic [ref=f1e37]:
+          - img "Календарные события" [ref=f1e39]
+          - paragraph [ref=f1e40]: Календарныесобытия
+        - generic [ref=f1e41]:
+          - img "Личные контакты" [ref=f1e43]
+          - paragraph [ref=f1e44]: Личныеконтакты
+        - generic [ref=f1e45]:
+          - img "Задачи" [ref=f1e47]
+          - paragraph [ref=f1e48]: Задачи
+        - generic [ref=f1e49]:
+          - img "Переговорки" [ref=f1e51]
+          - paragraph [ref=f1e52]: Переговорки
+    - generic [ref=f1e54]:
+      - generic [ref=f1e55]:
+        - heading "Ускорьте проекты перехода на отечественное ПО" [level=2] [ref=f1e56]: Ускорьте проекты переходана отечественное ПО
+        - paragraph [ref=f1e57]: Скорость работы ПК «Мигратор ЭПС» в 3 раза выше, чем у аналогичных opensource-решений. Многопоточный режим работы обеспечивает максимально возможное быстродействие, ограниченное лишь функциональными возможностями почтовой системы Microsoft Exchange
+      - generic [ref=f1e58]:
+        - link "Запросить демо" [ref=f1e59] [cursor=pointer]:
+          - /url: "#form"
+        - link "Получить презентацию" [ref=f1e60] [cursor=pointer]:
+          - /url: "#form"
+    - generic [ref=f1e62]:
+      - heading "С какой скоростью происходит миграция" [level=2] [ref=f1e63]: С какой скоростьюпроисходит миграция
+      - generic [ref=f1e64]:
+        - generic [ref=f1e67]:
+          - paragraph [ref=f1e68]: 10 000
+          - paragraph [ref=f1e69]: учетных записей в час
+        - generic [ref=f1e72]:
+          - paragraph [ref=f1e73]: "100"
+          - paragraph [ref=f1e74]: групп рассылок в час
+        - generic [ref=f1e77]:
+          - paragraph [ref=f1e78]: "550"
+          - paragraph [ref=f1e79]: писем в секунду
+        - generic [ref=f1e82]:
+          - paragraph [ref=f1e83]: 10+
+          - paragraph [ref=f1e84]: событий в секунду
+        - generic [ref=f1e87]:
+          - paragraph [ref=f1e88]: 10+
+          - paragraph [ref=f1e89]: контактов в секунду
+    - generic [ref=f1e90]:
+      - heading "Принципиальная схема ПК «Мигратор ЭПС»" [level=2] [ref=f1e91]: Принципиальная схемаПК «Мигратор ЭПС»
+      - generic [ref=f1e92]:
+        - generic [ref=f1e93]:
+          - paragraph [ref=f1e94]:
+            - text: Исходная почтовая система —
+            - strong [ref=f1e95]: MS Exchange
+          - generic [ref=f1e96]:
+            - generic [ref=f1e97]: Почтовые сообщения
+            - generic [ref=f1e98]: Учетные записи
+            - generic [ref=f1e99]: Группы рассылок
+            - generic [ref=f1e100]: Календарные события
+            - generic [ref=f1e101]: Личные контакты
+            - generic [ref=f1e102]: Задачи
+            - generic [ref=f1e103]: Переговорки
+        - generic [ref=f1e104]:
+          - generic [ref=f1e105]: IMAP
+          - generic [ref=f1e109]: LDAP
+          - generic [ref=f1e113]: LDAP
+          - generic [ref=f1e117]: EWS
+          - generic [ref=f1e121]: EWS
+          - generic [ref=f1e125]: EWS
+          - generic [ref=f1e129]: EWS
+        - paragraph [ref=f1e134]: Программный комплекс «Мигратор электронных почтовых систем»
+        - generic [ref=f1e135]:
+          - generic [ref=f1e136]: IMAP
+          - generic [ref=f1e140]: LDAP
+          - generic [ref=f1e144]: LDAP
+          - generic [ref=f1e148]: XIMSS
+          - generic [ref=f1e152]: XIMSS
+          - generic [ref=f1e156]: XIMSS
+          - generic [ref=f1e160]: XIMSS
+        - generic [ref=f1e164]:
+          - generic [ref=f1e165]:
+            - generic [ref=f1e166]: Почтовые сообщения
+            - generic [ref=f1e167]: Учетные записи
+            - generic [ref=f1e168]: Группы рассылок
+            - generic [ref=f1e169]: Календарные события
+            - generic [ref=f1e170]: Личные контакты
+            - generic [ref=f1e171]: Задачи
+            - generic [ref=f1e172]: Переговорки
+          - paragraph [ref=f1e173]:
+            - text: Целевая почтовая система —
+            - strong [ref=f1e174]: CommuniGate Pro
+    - generic [ref=f1e175]:
+      - generic [ref=f1e176]:
+        - heading "Рассчитать миграцию" [level=2] [ref=f1e177]
+        - paragraph [ref=f1e178]: Оцените время переноса почты (зависимость скорости миграции от размера сообщений)
+      - generic [ref=f1e179]:
+        - generic [ref=f1e180]:
+          - generic [ref=f1e181]:
+            - generic [ref=f1e182]: Общий объём сообщений
+            - paragraph [ref=f1e184]: 1.00 ТБ
+            - generic [ref=f1e185]:
+              - slider [ref=f1e186]: "25"
+              - generic [ref=f1e193]:
+                - generic [ref=f1e194]: 1 МБ
+                - generic [ref=f1e195]: 700 ТБ
+          - generic [ref=f1e196]:
+            - generic [ref=f1e197]: Доля писем с вложениями
+            - paragraph [ref=f1e203]: 0.0%
+            - generic [ref=f1e204]:
+              - slider [ref=f1e205]: "0"
+              - generic [ref=f1e212]:
+                - generic [ref=f1e213]: 0% без вложений
+                - generic [ref=f1e214]: все c вложениями 100%
+          - generic [ref=f1e215]:
+            - generic [ref=f1e216]: Часов в сутки на миграцию
+            - paragraph [ref=f1e222]: 24 ч
+            - generic [ref=f1e223]:
+              - slider [ref=f1e224]: "24"
+              - generic [ref=f1e231]:
+                - generic [ref=f1e232]: 1ч / сутки
+                - generic [ref=f1e233]: 24ч / сутки
+          - generic [ref=f1e234]:
+            - paragraph [ref=f1e235]: Факторы, влияющие на скорость миграции
+            - generic [ref=f1e236]:
+              - generic [ref=f1e237] [cursor=pointer]:
+                - checkbox "Дисковая система SATA (+40% времени)" [ref=f1e238]
+                - generic [ref=f1e239]: Дисковая система SATA (+40% времени)
+              - generic [ref=f1e240] [cursor=pointer]:
+                - checkbox "Антивирус на целевом сервере (+30% времени)" [ref=f1e241]
+                - generic [ref=f1e242]: Антивирус на целевом сервере (+30% времени)
+              - generic [ref=f1e243]:
+                - checkbox "Наличие СЗИ (индивидуальный расчет)" [disabled] [ref=f1e244]
+                - generic [ref=f1e245]: Наличие СЗИ (индивидуальный расчет)
+        - generic [ref=f1e246]:
+          - generic [ref=f1e247]:
+            - generic [ref=f1e248]:
+              - paragraph [ref=f1e249]: Общее количество сообщений
+              - paragraph [ref=f1e250]: 33 583 129 шт
+            - generic [ref=f1e251]:
+              - paragraph [ref=f1e252]: Средний размер сообщения
+              - paragraph [ref=f1e253]: 0.031 МБ (32740 байт)
+          - generic [ref=f1e254]:
+            - generic [ref=f1e255]:
+              - paragraph [ref=f1e256]: Расчетная скорость миграции
+              - paragraph [ref=f1e257]: 531 письмо/сек
+            - generic [ref=f1e258]:
+              - paragraph [ref=f1e259]: Длительность(при работе 24 часов в день)
+              - paragraph [ref=f1e260]: 17:33:34
+            - generic [ref=f1e261]:
+              - paragraph [ref=f1e262]: Рабочих дней (по 24 ч/день)
+              - paragraph [ref=f1e263]: "1"
+          - generic [ref=f1e264]:
+            - link "Запросить демо" [ref=f1e265] [cursor=pointer]:
+              - /url: "#form"
+            - link "Получить презентацию" [ref=f1e266] [cursor=pointer]:
+              - /url: "#form"
+    - generic [ref=f1e267]:
+      - generic [ref=f1e268]:
+        - heading "Двухсторонняя синхронизация в режиме сосуществования" [level=2] [ref=f1e269]: Двухсторонняя синхронизацияв режиме сосуществования
+        - paragraph [ref=f1e270]: Работайте на разных серверах в едином пространстве,без остановки бизнес-процессов
+      - generic [ref=f1e271]:
+        - generic [ref=f1e272]:
+          - paragraph [ref=f1e273]:
+            - strong [ref=f1e274]: ПК «Мигратор ЭПС»
+            - text: обеспечивает двухстороннюю синхронизацию между почтовыми системами, а не просто экспорт данных из MS Exchange
+          - paragraph [ref=f1e275]:
+            - strong [ref=f1e276]: "Возможности ПК «Мигратор ЭПС»:"
+            - text: В процессе миграции происходит постоянная двухстороняя синхронизация календарных событий, задач и переговорных комнат между исходной и целевой почтовыми системами, в том числе отправка, прием, изменения и отзыв приглашений, а также просмотр занятости
+        - generic [ref=f1e277]:
+          - generic [ref=f1e278]:
+            - paragraph [ref=f1e279]: Отправка, приём, отзыв и исправления
+            - generic [ref=f1e280]:
+              - paragraph [ref=f1e282]: Календарные событияи Задачи
+              - paragraph [ref=f1e284]: Переговорныекомнаты
+              - paragraph [ref=f1e286]: Просмотрзанятости
+          - paragraph [ref=f1e288]: Из исходнойсистемы в целевую
+          - paragraph [ref=f1e297]: Из целевойсистемы в исходную
+    - generic [ref=f1e306]:
+      - generic [ref=f1e307]:
+        - heading "Требования к инфраструктуре" [level=2] [ref=f1e308]
+        - generic [ref=f1e309]:
+          - generic [ref=f1e310]:
+            - paragraph [ref=f1e311]: Один выделенный сервер
+            - list [ref=f1e312]:
+              - listitem [ref=f1e313]: 8-ми ядерный процессор
+              - listitem [ref=f1e314]: 32 ГБ оперативной памяти
+              - listitem [ref=f1e315]: 2 накопителя по 250 ГБ
+              - listitem [ref=f1e316]: Российская операционная система актуальной версии
+          - generic [ref=f1e317]:
+            - paragraph [ref=f1e318]: Сетевые настройки
+            - list [ref=f1e319]:
+              - listitem [ref=f1e320]: Открытые порты для доступа к исходной системе
+              - listitem [ref=f1e321]: Открытые порты для доступа к целевой системе
+              - listitem [ref=f1e322]: Открыт порт SSH для доступа к серверу
+      - generic [ref=f1e323]:
+        - link "Запросить демо" [ref=f1e324] [cursor=pointer]:
+          - /url: "#form"
+        - link "Получить презентацию" [ref=f1e325] [cursor=pointer]:
+          - /url: "#form"
+    - generic [ref=f1e327]:
+      - heading "ПК «Мигратор ЭПС» состав и возможности" [level=2] [ref=f1e328]: ПК «Мигратор ЭПС»состав и возможности
+      - generic [ref=f1e329]:
+        - generic [ref=f1e332]:
+          - generic [ref=f1e333]: Технологии
+          - generic [ref=f1e334]: Особенности
+          - generic [ref=f1e335]: Скорость
+          - generic [ref=f1e336]: ОС
+          - generic [ref=f1e337]: Разработка
+          - generic [ref=f1e338]: Установка
+          - generic [ref=f1e339]: Настройка
+          - generic [ref=f1e340]: Ограничения
+        - generic [ref=f1e341]:
+          - generic [ref=f1e342]:
+            - generic [ref=f1e343]:
+              - generic [ref=f1e344]: Модуль переносаПочтовых сообщений
+              - generic [ref=f1e346]:
+                - generic [ref=f1e347]: IMAP для доступав исходную и целевую системы
+                - generic [ref=f1e348]: Возможность запускав многопоточном режимеДетальное протоколирование работы
+                - generic [ref=f1e349]: Скорость переноса500 и более сообщенийв секунду
+            - generic [ref=f1e350]:
+              - generic [ref=f1e351]:
+                - generic [ref=f1e352]: Модуль синхронизацииучетных записей
+                - generic [ref=f1e353]: Модуль переносагрупп рассылок
+              - generic [ref=f1e354]:
+                - generic [ref=f1e355]: Синхронизация по протоколу LDAP Один или несколько LDAP-каталогов Поддержка как LDAP так и LDAPS Направление из LDAP-каталога в CGP
+                - list [ref=f1e357]:
+                  - listitem [ref=f1e358]: Синхронизация вносимых изменений
+                  - listitem [ref=f1e359]: Выбор мастер-каталога для каждой учетной записи
+                  - listitem [ref=f1e360]: Возможность тонкой настройки соответствия атрибутов
+                - generic [ref=f1e361]:
+                  - generic [ref=f1e362]: Скорость обработки10 000 учетных записей в час
+                  - generic [ref=f1e363]: Скорость переносаболее 100 групп в час
+            - generic [ref=f1e364]:
+              - generic [ref=f1e365]:
+                - generic [ref=f1e366]: Модуль переносаличных контактов
+                - generic [ref=f1e367]: Модуль переносакалендарных событий
+              - generic [ref=f1e368]:
+                - list [ref=f1e370]:
+                  - listitem [ref=f1e371]: XIMSS — для доступа в целевую систему
+                  - listitem [ref=f1e372]: EWS — для доступа в исходную систему
+                - generic [ref=f1e373]:
+                  - generic [ref=f1e374]: Одностороннийи разовый перенос
+                  - generic [ref=f1e375]: Двухсторонняя и постоянная синхронизация при переносе событий, задач, переговорок
+                - generic [ref=f1e376]:
+                  - generic [ref=f1e377]: Скорость переносав среднем 10 контактов в секунду
+                  - generic [ref=f1e378]: Скорость синхронизации более 10 событий в секунду
+          - generic [ref=f1e379]: Работа на российских ОС
+          - generic [ref=f1e380]: Собственная разработка на C++
+          - generic [ref=f1e381]: Установка простым копированием или пакетом
+          - generic [ref=f1e382]: Настройка через файл
+          - generic [ref=f1e384]:
+            - generic [ref=f1e385]: —
+            - generic [ref=f1e386]: —
+            - generic [ref=f1e387]: —
+            - generic [ref=f1e388]: Ограничение переносимых полей (можно перенести только то, что на текущий момент поддерживает целевая система)
+      - generic [ref=f1e389]:
+        - link "Запросить демо" [ref=f1e390] [cursor=pointer]:
+          - /url: "#form"
+        - link "Получить презентацию" [ref=f1e391] [cursor=pointer]:
+          - /url: "#form"
+    - generic [ref=f1e392]:
+      - generic [ref=f1e393]:
+        - heading "Как работает ПК «Мигратор ЭПС»" [level=2] [ref=f1e394]
+        - paragraph [ref=f1e395]: Посмотрите серию коротких роликов о продукте
+      - generic [ref=f1e396]:
+        - img "Настройка переговорных комнат и просмотр занятости" [ref=f1e398] [cursor=pointer]
+        - img "Перенос календарного события из Microsoft Exchange в CommuniGate Pro" [ref=f1e400]
+        - img "Миграция почтовых сообщений и вложений" [ref=f1e405] [cursor=pointer]
+      - generic [ref=f1e406]:
+        - paragraph [ref=f1e407]: Перенос календарного события из Microsoft Exchange в CommuniGate Pro
+        - generic [ref=f1e408]:
+          - button "Предыдущее видео" [ref=f1e409] [cursor=pointer]
+          - button "Следующее видео" [ref=f1e412] [cursor=pointer]
+    - generic [ref=f1e415]:
+      - heading "Стоимость и комплектация ПК «Мигратор ЭПС»" [level=2] [ref=f1e416]: Стоимость и комплектацияПК «Мигратор ЭПС»
+      - generic [ref=f1e417]:
+        - generic [ref=f1e418]:
+          - generic [ref=f1e419]:
+            - paragraph [ref=f1e420]: Лицензия
+            - paragraph [ref=f1e421]: Лицензия на программу для ЭВМ «Программный комплекс «Мигратор электронных почтовых систем», сроком действия 1 (один) год, предоставляющая право однократного переноса одного почтового ящика из исходной почтовой системы в целевую
+          - generic [ref=f1e422]:
+            - generic [ref=f1e423]:
+              - paragraph [ref=f1e424]: 300 ₽
+              - paragraph [ref=f1e425]: (вкл. НДС 22%)
+            - generic [ref=f1e426]:
+              - link "Купить" [ref=f1e427] [cursor=pointer]:
+                - /url: "#form"
+              - link "Лицензионная программа" [ref=f1e428] [cursor=pointer]:
+                - /url: "#form"
+        - generic [ref=f1e429]:
+          - generic [ref=f1e430]:
+            - paragraph [ref=f1e431]: Комплект документации
+            - paragraph [ref=f1e432]: Комплект методических материалов по применению программы для ЭВМ «Программный комплекс «Мигратор электронных почтовых систем»
+          - generic [ref=f1e433]:
+            - generic [ref=f1e434]:
+              - paragraph [ref=f1e435]: 170 000 ₽
+              - paragraph [ref=f1e436]: (вкл. НДС 22%)
+            - link "Купить" [ref=f1e438] [cursor=pointer]:
+              - /url: "#form"
+        - generic [ref=f1e439]:
+          - generic [ref=f1e440]:
+            - paragraph [ref=f1e441]: Сертификат техподдержки
+            - paragraph [ref=f1e442]: Сертификат технической поддержки программы для ЭВМ «Программный комплекс «Мигратор электронных почтовых систем», сроком действия 1 (один) год, для однократного переноса одного почтового ящика из исходной почтовой системы в целевую
+          - generic [ref=f1e443]:
+            - generic [ref=f1e444]:
+              - paragraph [ref=f1e445]: 300 ₽
+              - paragraph [ref=f1e446]: (вкл. НДС 22%)
+            - generic [ref=f1e447]:
+              - link "Купить" [ref=f1e448] [cursor=pointer]:
+                - /url: "#form"
+              - link "Регламент технической поддержки" [ref=f1e449] [cursor=pointer]:
+                - /url: "#form"
+      - generic [ref=f1e450]:
+        - generic [ref=f1e451]: i
+        - paragraph [ref=f1e452]: Под почтовым ящиком понимается уникальный учетный объект почтовой системы, предназначенный для приема, хранения и/или отправки электронных сообщений, имеющий отдельный идентификатор (адрес электронной почты) и собственное хранилище сообщений, вне зависимости от того, закреплен ли такой ящик за конкретным пользователем-физическим лицом, используется совместно несколькими лицами либо является техническим (сервисным)
+    - generic [ref=f1e453]:
+      - heading "Заказать демо" [level=2] [ref=f1e454]
+      - generic [ref=f1e455]:
+        - generic [ref=f1e456]:
+          - generic [ref=f1e457]:
+            - textbox "Как к вам обращаться" [ref=f1e459]
+            - textbox "Email" [ref=f1e461]
+          - generic [ref=f1e462]:
+            - generic [ref=f1e463]: Укажите ваш вопрос
+            - textbox "Укажите ваш вопрос" [ref=f1e464]:
+              - /placeholder: Текст сообщения
+        - button "Отправить" [ref=f1e465] [cursor=pointer]
+        - paragraph
+    - generic [ref=f1e466]:
+      - heading "Вопросы и ответы" [level=2] [ref=f1e467]
+      - generic [ref=f1e468]:
+        - group [ref=f1e469]:
+          - generic "Как выглядит процесс миграции для конечного пользователя?" [ref=f1e470] [cursor=pointer]
+          - paragraph [ref=f1e473]: После инсталляции и настройки процессы переноса и синхронизации данных между двумя почтовыми системами осуществляется автоматически. Работоспособность поддерживается администраторами систем. Режим двухстороннего сосуществования обеспечивается в течение всего периода процесса миграции. Для пользователей процесс синхронизации выполняется незаметно, они продолжают работать с почтовыми клиентами на своих компьютерах без каких-либо ограничений и без остановки процессов
+        - group [ref=f1e474]:
+          - generic "От чего зависят сроки миграции почтовых систем?" [ref=f1e475] [cursor=pointer]
+        - group [ref=f1e478]:
+          - generic "Обеспечивает ли ПК «Мигратор ЭПС» полный перенос данных почтовых систем?" [ref=f1e479] [cursor=pointer]
+        - group [ref=f1e482]:
+          - generic "Работает ли ПК «Мигратор ЭПС» в автоматическом режиме?" [ref=f1e483] [cursor=pointer]
+        - group [ref=f1e486]:
+          - generic "Какие требования предъявляются к серверной инфраструктуре?" [ref=f1e487] [cursor=pointer]
+  - contentinfo [ref=f1e490]:
+    - generic [ref=f1e491]:
+      - link [ref=f1e492] [cursor=pointer]:
+        - /url: "#top"
+        - img "Безант" [ref=f1e493]
+      - generic [ref=f1e494]:
+        - paragraph [ref=f1e495]: Производственный офис
+        - paragraph [ref=f1e496]: 125171, г. Москва, 5-й Войковский проезд, дом 2
+      - generic [ref=f1e497]:
+        - paragraph [ref=f1e498]: Почтовый адрес
+        - paragraph [ref=f1e499]: 125171, г. Москва, а/я 126
+      - generic [ref=f1e500]:
+        - paragraph [ref=f1e501]: Сайт
+        - paragraph [ref=f1e502]: www.bezant.pro
+      - generic [ref=f1e503]:
+        - paragraph [ref=f1e504]: +7 (499) 150-61-67
+        - paragraph [ref=f1e505]: bezant@bezantsoft.ru
+    - paragraph [ref=f1e508]: (С) АО «Безант», 2026 г.

@@ -12,6 +12,9 @@ body {
 
 html {
   scroll-behavior: smooth;
+  /* Keep anchored sections from landing under the fixed header
+     (~93px tall: 2×sp-20 vertical padding + the demo button). */
+  scroll-padding-top: 6.5rem;
 }
 
 body {

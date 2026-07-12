@@ -72,8 +72,11 @@
   /* Left/right inset that matches the centered-and-capped content column used by
      every other section (padding + extra centering gap once container-width binds).
      Hero has no such wrapper (its background must stay full-bleed), so its content
-     uses this directly to stay aligned with the rest of the page past 1400px. */
-  --content-inset: calc(var(--container-pad) + max(0px, (100vw - (2 * var(--container-pad)) - var(--container-width)) / 2));
+     uses this directly to stay aligned with the rest of the page past 1400px.
+     Uses 100% (containing-block width, scrollbar excluded) rather than 100vw so the
+     header/hero content edge lines up exactly with the centered content columns —
+     100vw would include the vertical scrollbar and push them ~half a scrollbar inward. */
+  --content-inset: calc(var(--container-pad) + max(0px, (100% - (2 * var(--container-pad)) - var(--container-width)) / 2));
 }
 
 html {
