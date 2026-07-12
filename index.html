@@ -594,14 +594,16 @@
 
   <section class="contact-form section" id="form">
     <h2 class="section-title">Заказать демо</h2>
-    <form id="demoForm">
+    <form id="demoForm" novalidate>
       <div class="contact-form__fields">
         <div class="contact-form__row">
           <div class="contact-form__field">
-            <input type="text" name="name" placeholder="Как к вам обращаться" required>
+            <input type="text" name="name" placeholder="Как к вам обращаться" required aria-describedby="nameError">
+            <p class="contact-form__error" id="nameError" hidden></p>
           </div>
           <div class="contact-form__field">
-            <input type="email" name="email" placeholder="Email" required>
+            <input type="email" name="email" placeholder="Email" required aria-describedby="emailError">
+            <p class="contact-form__error" id="emailError" hidden></p>
           </div>
         </div>
         <div class="contact-form__textarea">
