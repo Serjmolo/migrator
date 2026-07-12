@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Playwright MCP artifacts
+.playwright-mcp/
+
+# Claude Code — личные настройки (общие правила в .claude/agents оставляем в репозитории)
+.claude/settings.local.json
+
+# Node (на случай, если появится сборка)
+node_modules/
