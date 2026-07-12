@@ -199,8 +199,7 @@
 }
 
 .table__group-row ul {
-  list-style: disc;
-  list-style-position: inside;
+  list-style: none;
   text-align: center;
   font-weight: 700;
   padding: 0;
