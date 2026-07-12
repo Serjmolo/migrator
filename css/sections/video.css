@@ -96,6 +96,53 @@
   height: 3rem;
 }
 
+/* Swap animation on navigation — direction class is toggled on .video by JS.
+   Scale > 1 during the drift keeps the image edges covered inside the
+   overflow-hidden slide, so the horizontal slide never reveals a gap. */
+@keyframes video-swap-next {
+  from { opacity: 0; transform: translateX(0.5rem) scale(1.06); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes video-swap-prev {
+  from { opacity: 0; transform: translateX(-0.5rem) scale(1.06); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes video-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes video-caption-in {
+  from { opacity: 0; transform: translateY(0.4rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.video.is-next .video__slide img { animation: video-swap-next 0.4s ease both; }
+.video.is-prev .video__slide img { animation: video-swap-prev 0.4s ease both; }
+
+/* Play chip and dark overlay crossfade with the image (opacity only, so their
+   own transforms are untouched). */
+.video.is-next .video__play,
+.video.is-prev .video__play,
+.video.is-next .video__slide::after,
+.video.is-prev .video__slide::after { animation: video-fade-in 0.4s ease both; }
+
+.video.is-next .video__caption,
+.video.is-prev .video__caption { animation: video-caption-in 0.4s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .video.is-next .video__slide img,
+  .video.is-prev .video__slide img,
+  .video.is-next .video__play,
+  .video.is-prev .video__play,
+  .video.is-next .video__slide::after,
+  .video.is-prev .video__slide::after,
+  .video.is-next .video__caption,
+  .video.is-prev .video__caption { animation: none; }
+}
+
 .video__footer {
   display: flex;
   align-items: center;
