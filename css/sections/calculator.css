@@ -5,7 +5,7 @@
   gap: var(--sp-48);
   padding: var(--sp-96) 13.125rem; /* 210px */
   background: var(--surface-light-blue-01);
-  border-radius: var(--radius-40);
+  border-radius: 0 0 var(--radius-40) var(--radius-40);
 }
 
 .calc {

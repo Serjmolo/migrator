@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sp-48);
-  padding: var(--sp-96) 23.875rem; /* 382px */
+  gap: var(--sp-32);
+  padding: var(--sp-64) 23.875rem; /* 382px */
   background: var(--surface-light-blue-02);
   border-radius: var(--radius-40);
 }
