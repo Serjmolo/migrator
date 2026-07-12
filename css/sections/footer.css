@@ -41,6 +41,14 @@
   color: var(--text-inverse);
 }
 
+.footer__block-link {
+  transition: color 0.15s ease;
+}
+
+.footer__block-link:hover {
+  color: var(--surface-neon);
+}
+
 .footer__contact {
   display: flex;
   flex-direction: column;
