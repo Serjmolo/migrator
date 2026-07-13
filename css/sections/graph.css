@@ -89,7 +89,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--sp-8);
-  padding: 0 5.625rem; /* 90px */
+  padding: 0 var(--sp-24); /* match .graph__block inset so arrows align under the columns */
 }
 
 .graph__connector {
