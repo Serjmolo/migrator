@@ -89,7 +89,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--sp-8);
-  padding: 1rem 1.625rem; /* 90px */
+  padding: var(--sp-8) 1.625rem; /* 8px vertical gap to blocks; horizontal aligns arrows to columns */
 }
 
 .graph__connector {
