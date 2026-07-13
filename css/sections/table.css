@@ -70,7 +70,7 @@
 .table__bar {
   background: var(--surface-light-blue-02);
   border-radius: var(--radius-12);
-  height: 4.0625rem; /* 65px */
+  height: 3.25rem; /* 52px */
   display: flex;
   align-items: center;
   justify-content: center;
