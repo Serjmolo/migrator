@@ -40,7 +40,7 @@
 }
 
 .header__menu a:hover {
-  color: var(--surface-neon);
+  color: #2351E7;
 }
 
 /* Solid state once the page is scrolled away from the hero (Figma HeaderScroll 296:1324) */
@@ -59,6 +59,10 @@
 
 .header--scrolled .header__menu {
   color: var(--text-primary);
+}
+
+.header--scrolled .header__menu a:hover {
+  color: #2351E7;
 }
 
 .header--scrolled .btn--secondary {
