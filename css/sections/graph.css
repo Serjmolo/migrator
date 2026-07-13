@@ -46,7 +46,7 @@
 
 .graph__row {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: var(--sp-8);
   width: 100%;
