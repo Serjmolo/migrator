@@ -1,0 +1,5 @@
+# Large video assets — kept on disk, deployed separately, not tracked in git
+assets/video/
+
+# Playwright MCP session artifacts
+.playwright-mcp/
