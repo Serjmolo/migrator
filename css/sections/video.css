@@ -18,13 +18,22 @@
   height: 23.75rem; /* 380px */
 }
 
+/* Every slide is positioned by the horizontal center of its slot (left) plus a
+   constant translate(-50%, -50%). Navigation animates left/width/height/opacity
+   between slots, so the whole set physically slides one step. transform stays
+   constant, so it never fights the position transition. */
 .video__slide {
   position: absolute;
   top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22rem; /* 352px — side/off-stage default */
+  height: 17.5rem; /* 280px */
   border-radius: var(--radius-12);
   overflow: hidden;
   border: 1px solid var(--surface-blue);
-  transition: all 0.35s ease;
+  transition: left 0.45s ease, width 0.45s ease, height 0.45s ease, opacity 0.45s ease;
+  will-change: left, width, height, opacity;
   cursor: pointer;
 }
 
@@ -41,31 +50,40 @@
   background: rgba(0, 19, 49, 0.6);
 }
 
-.video__slide[data-role="active"] {
+/* Center — large, opaque, on top */
+.video__slide.pos-active {
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 42.25rem; /* 676px */
   height: 23.75rem; /* 380px */
+  opacity: 1;
   z-index: 3;
   cursor: default;
 }
 
-.video__slide[data-role="prev"] {
-  left: 0;
-  transform: translateY(-50%);
-  width: 22rem; /* 352px */
-  height: 17.5rem; /* 280px */
+/* Left peek — center sits 11rem (half its width) from the left edge */
+.video__slide.pos-prev {
+  left: 11rem;
   opacity: 0.5;
   z-index: 2;
 }
 
-.video__slide[data-role="next"] {
-  left: auto;
-  right: 0;
-  transform: translateY(-50%);
-  width: 22rem; /* 352px */
-  height: 17.5rem; /* 280px */
+/* Right peek — center sits 11rem from the right edge */
+.video__slide.pos-next {
+  left: calc(100% - 11rem);
   opacity: 0.5;
+  z-index: 2;
+}
+
+/* Off-stage staging slots (fully hidden just past each edge) */
+.video__slide.pos-offleft {
+  left: -11rem;
+  opacity: 0;
+  z-index: 1;
+}
+
+.video__slide.pos-offright {
+  left: calc(100% + 11rem);
+  opacity: 0;
   z-index: 1;
 }
 
@@ -96,51 +114,17 @@
   height: 3rem;
 }
 
-/* Swap animation on navigation — direction class is toggled on .video by JS.
-   Scale > 1 during the drift keeps the image edges covered inside the
-   overflow-hidden slide, so the horizontal slide never reveals a gap. */
-@keyframes video-swap-next {
-  from { opacity: 0; transform: translateX(0.5rem) scale(1.06); }
-  to   { opacity: 1; transform: translateX(0) scale(1); }
-}
-
-@keyframes video-swap-prev {
-  from { opacity: 0; transform: translateX(-0.5rem) scale(1.06); }
-  to   { opacity: 1; transform: translateX(0) scale(1); }
-}
-
-@keyframes video-fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
+/* Caption swaps in sync with the slide; JS re-triggers the fade on navigation. */
 @keyframes video-caption-in {
   from { opacity: 0; transform: translateY(0.4rem); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.video.is-next .video__slide img { animation: video-swap-next 0.4s ease both; }
-.video.is-prev .video__slide img { animation: video-swap-prev 0.4s ease both; }
-
-/* Play chip and dark overlay crossfade with the image (opacity only, so their
-   own transforms are untouched). */
-.video.is-next .video__play,
-.video.is-prev .video__play,
-.video.is-next .video__slide::after,
-.video.is-prev .video__slide::after { animation: video-fade-in 0.4s ease both; }
-
-.video.is-next .video__caption,
-.video.is-prev .video__caption { animation: video-caption-in 0.4s ease both; }
+.video__caption.is-changing { animation: video-caption-in 0.45s ease; }
 
 @media (prefers-reduced-motion: reduce) {
-  .video.is-next .video__slide img,
-  .video.is-prev .video__slide img,
-  .video.is-next .video__play,
-  .video.is-prev .video__play,
-  .video.is-next .video__slide::after,
-  .video.is-prev .video__slide::after,
-  .video.is-next .video__caption,
-  .video.is-prev .video__caption { animation: none; }
+  .video__slide { transition: none; }
+  .video__caption.is-changing { animation: none; }
 }
 
 .video__footer {

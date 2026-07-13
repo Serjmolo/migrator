@@ -503,17 +503,11 @@
     </div>
 
     <div class="video__stage" id="videoStage">
-      <div class="video__slide" data-role="prev">
-        <img data-role-img alt="">
-      </div>
-      <div class="video__slide" data-role="active">
-        <img data-role-img alt="">
-        <div class="video__play" role="button" tabindex="0" aria-label="Смотреть видео">
-          <svg viewBox="0 0 48 48" fill="none"><path d="M16 10L38 24L16 38V10Z" fill="white"/></svg>
-        </div>
-      </div>
-      <div class="video__slide" data-role="next">
-        <img data-role-img alt="">
+      <!-- Slides are rendered by js/video-carousel.js (3 peek slots + a transient
+           incoming slot during navigation). The play chip stays fixed at stage
+           center so it doesn't travel with the sliding slides. -->
+      <div class="video__play" role="button" tabindex="0" aria-label="Смотреть видео">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M16 10L38 24L16 38V10Z" fill="white"/></svg>
       </div>
     </div>
 
