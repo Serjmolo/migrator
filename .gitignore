@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # OS
 .DS_Store
 Thumbs.db
@@ -24,3 +25,10 @@ node_modules/
 
 # Видео-ролики секции Video — тяжёлые бинарники, храним вне репозитория
 assets/video/*.mp4
+=======
+# Large video assets — kept on disk, deployed separately, not tracked in git
+assets/video/
+
+# Playwright MCP session artifacts
+.playwright-mcp/
+>>>>>>> Fix-bug

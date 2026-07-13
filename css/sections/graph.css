@@ -89,7 +89,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--sp-8);
-  padding: 0 5.625rem; /* 90px */
+  padding: 0 var(--sp-24); /* match .graph__block inset so arrows align under the columns */
 }
 
 .graph__connector {
@@ -101,32 +101,34 @@
 }
 
 .graph__connector-line {
-  width: 0.125rem; /* 2px */
-  height: 1.5rem; /* 24px, split above/below badge for a 2x40px total span */
+  width: 0.25rem; /* 4px */
+  height: 2rem; /* 32px, split above/below badge */
   background: var(--surface-blue);
   position: relative;
 }
 
-.graph__connector-line::before,
-.graph__connector-line::after {
+/* Arrowheads: the down arrow renders on every connector; the up arrow only on
+   bidirectional connectors (columns 1/4/6/7 — see .graph__connector--bidir). */
+.graph__connector-line--bottom::after,
+.graph__connector--bidir .graph__connector-line--top::before {
   content: "";
   position: absolute;
   left: 50%;
   width: 0;
   height: 0;
-  border-left: 0.3125rem solid transparent; /* 5px */
-  border-right: 0.3125rem solid transparent; /* 5px */
+  border-left: 0.8125rem solid transparent; /* 13px */
+  border-right: 0.8125rem solid transparent; /* 13px */
   transform: translateX(-50%);
 }
 
-.graph__connector-line--top::before {
-  top: -0.0625rem; /* -1px */
-  border-bottom: 0.4375rem solid var(--surface-blue); /* 7px */
+.graph__connector--bidir .graph__connector-line--top::before {
+  top: -0.0188rem; /* -0.3px, чтобы стрелка не прилипала к границе блока */
+  border-bottom: 1.25rem solid var(--surface-blue); /* 20px */
 }
 
 .graph__connector-line--bottom::after {
   bottom: -0.0625rem; /* -1px */
-  border-top: 0.4375rem solid var(--surface-blue); /* 7px */
+  border-top: 1.25rem solid var(--surface-blue); /* 20px */
 }
 
 .graph__badge {
