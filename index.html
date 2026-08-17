@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1200, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ПК «Мигратор ЭПС» — миграция почты из Microsoft Exchange в CommuniGate Pro</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="css/sections/form.css">
 <link rel="stylesheet" href="css/sections/faq.css">
 <link rel="stylesheet" href="css/sections/footer.css">
+<link rel="stylesheet" href="css/mobile.css">
 </head>
 <body>
 
@@ -48,7 +49,9 @@
     <div class="hero__content">
       <div class="hero__title">
         <h1>ПК «Мигратор ЭПС»</h1>
-        <p>Быстро и бесшовно перенесите данные<br>из Microsoft Exchange в CommuniGate PRO</p>
+        <!-- Space before the <br> so the words stay separated when mobile.css
+             hides the break and the line rewraps. -->
+        <p>Быстро и бесшовно перенесите данные <br>из Microsoft Exchange в CommuniGate Pro</p>
       </div>
       <div class="hero__buttons">
         <a class="btn btn--secondary" href="#form">Запросить демо</a>
@@ -94,8 +97,8 @@
   <section class="utp section">
     <div class="utp__text">
       <div>
-        <h2>Ускорьте проекты перехода<br>на отечественное ПО</h2>
-        <p class="utp__body">Скорость работы ПК «Мигратор ЭПС» в 3 раза выше, чем у аналогичных opensource-решений. Многопоточный режим работы обеспечивает максимально возможное быстродействие, ограниченное лишь функциональными возможностями почтовой системы Microsoft Exchange</p>
+        <h2>Переносите данные в 3 раза быстрее</h2>
+        <p class="utp__body">Скорость работы ПК «Мигратор ЭПС» <strong>в 3 раза выше</strong>, чем у аналогичных opensource-решений. Многопоточный режим работы обеспечивает максимально возможное быстродействие, ограниченное лишь функциональными возможностями почтовой системы Microsoft Exchange</p>
       </div>
       <div class="utp__buttons">
         <a class="btn btn--primary" href="#form">Запросить демо</a>
@@ -209,6 +212,11 @@
         <p class="graph__block-title">Целевая почтовая система — <strong>CommuniGate Pro</strong></p>
       </div>
     </div>
+
+    <!-- Mobile-only CTA (Figma 726:1384). The 1440 frame has no button here.
+         The mobile diagram drops the per-data-type columns, so this opens the
+         full scheme (Figma 739:1012) fit to the screen in its own tab. -->
+    <a class="btn btn--secondary graph__cta" href="graph.html" target="_blank" rel="noopener">Смотреть схему</a>
   </section>
 
   <section class="calculator section" id="calculator">
@@ -223,6 +231,13 @@
         <div class="calc__cell">
           <div class="calc__cell-title"><span>Общий объём сообщений</span></div>
           <p class="calc__cell-value" id="volumeDisplay">1.00 МБ</p>
+          <!-- Mobile swaps the read-only readout above for this typeable field
+               (Figma 724:817). js/calculator-field.js keeps the two in sync and
+               maps a typed value back onto the slider. -->
+          <span class="calc__field" data-field="volume">
+            <input class="calc__field-input" id="volumeInput" type="text" inputmode="decimal" autocomplete="off" aria-label="Общий объём сообщений">
+            <span class="calc__field-unit" id="volumeUnit"></span>
+          </span>
           <div class="calc__range">
             <input type="range" id="volumeSlider" min="0" max="100" step="0.01" value="0">
             <div class="calc__range-ticks"><span></span><span></span><span></span><span></span><span></span></div>
@@ -238,10 +253,14 @@
             </span>
           </div>
           <p class="calc__cell-value" id="ratioDisplay">0.0%</p>
+          <span class="calc__field" data-field="ratio">
+            <input class="calc__field-input" id="ratioInput" type="text" inputmode="decimal" autocomplete="off" aria-label="Доля писем с вложениями">
+            <span class="calc__field-unit" id="ratioUnit"></span>
+          </span>
           <div class="calc__range">
             <input type="range" id="ratioSlider" min="0" max="100" step="0.1" value="0">
             <div class="calc__range-ticks"><span></span><span></span><span></span><span></span><span></span></div>
-            <div class="calc__range-labels"><span>0% без вложений</span><span>все c вложениями 100%</span></div>
+            <div class="calc__range-labels"><span>0 без вложений</span><span>все с вложениями 100%</span></div>
           </div>
         </div>
 
@@ -253,6 +272,10 @@
             </span>
           </div>
           <p class="calc__cell-value" id="hoursPerDayDisplay">24 ч</p>
+          <span class="calc__field" data-field="hours">
+            <input class="calc__field-input" id="hoursPerDayInput" type="text" inputmode="numeric" autocomplete="off" aria-label="Часов в сутки на миграцию">
+            <span class="calc__field-unit" id="hoursPerDayUnit"></span>
+          </span>
           <div class="calc__range">
             <input type="range" id="hoursPerDaySlider" min="1" max="24" step="1" value="24">
             <div class="calc__range-ticks"><span></span><span></span><span></span><span></span><span></span></div>
@@ -346,6 +369,19 @@
             <div class="sync__check"></div>
           </div>
         </div>
+        <!-- Mobile repeats the row-label column so the table can break into two
+             stacked 2-column tables (Figma 739:963 / 739:984). Hidden on desktop. -->
+        <div class="sync__col sync__col--orange sync__col--repeat">
+          <p class="sync__col-title">Отправка, приём, отзыв и исправления</p>
+          <div class="sync__col-rows">
+            <div class="sync__divider"></div>
+            <p class="sync__row-label">Календарные события<br>и Задачи</p>
+            <div class="sync__divider"></div>
+            <p class="sync__row-label">Переговорные<br>комнаты</p>
+            <div class="sync__divider"></div>
+            <p class="sync__row-label">Просмотр<br>занятости</p>
+          </div>
+        </div>
         <div class="sync__col sync__col--purple">
           <p class="sync__col-title">Из целевой<br>системы в исходную</p>
           <div class="sync__col-rows">
@@ -415,26 +451,33 @@
         <div class="table__groups">
           <div class="table__group table__group--single">
             <div class="table__group-head">
-              <div class="data-table__head-pill">Модуль переноса<br>Почтовых сообщений</div>
+              <div class="data-table__head-pill">Перенос<br>Почтовых сообщений</div>
             </div>
             <div class="table__group-body">
               <div class="table__group-row" style="height:100px">IMAP для доступа<br>в исходную и целевую системы</div>
-              <div class="table__group-row" style="height:112px">Возможность запуска<br>в многопоточном режиме<br>Детальное протоколирование работы</div>
+              <div class="table__group-row" style="height:112px">
+                <ul>
+                  <li>Возможность запуска<br>в многопоточном режиме</li>
+                  <li>Детальное протоколирование работы</li>
+                </ul>
+              </div>
               <div class="table__group-row" style="height:112px">Скорость переноса<br>500 и более сообщений<br>в секунду</div>
             </div>
           </div>
 
           <div class="table__group table__group--double">
             <div class="table__group-head">
-              <div class="data-table__head-pill">Модуль синхронизации<br>учетных записей</div>
-              <div class="data-table__head-pill">Модуль переноса<br>групп рассылок</div>
+              <div class="data-table__head-pill">Синхронизация<br>учетных записей</div>
+              <div class="data-table__head-pill">Перенос<br>групп рассылок</div>
             </div>
             <div class="table__group-body">
               <div class="table__group-row" style="height:100px">
-                Синхронизация по протоколу LDAP<br>
-                Один или несколько LDAP-каталогов<br>
-                Поддержка как LDAP так и LDAPS<br>
-                Направление из LDAP-каталога в CGP
+                <ul>
+                  <li>Синхронизация по протоколу LDAP</li>
+                  <li>Один или несколько LDAP-каталогов</li>
+                  <li>Поддержка как LDAP так и LDAPS</li>
+                  <li>Направление из LDAP-каталога в CGP</li>
+                </ul>
               </div>
               <div class="table__group-row" style="height:112px">
                 <ul>
@@ -452,8 +495,8 @@
 
           <div class="table__group table__group--double">
             <div class="table__group-head">
-              <div class="data-table__head-pill">Модуль переноса<br>личных контактов</div>
-              <div class="data-table__head-pill">Модуль переноса<br>календарных событий</div>
+              <div class="data-table__head-pill">Перенос<br>личных контактов</div>
+              <div class="data-table__head-pill">Перенос<br>календарных событий</div>
             </div>
             <div class="table__group-body">
               <div class="table__group-row" style="height:100px">
@@ -474,7 +517,7 @@
           </div>
         </div>
 
-        <div class="table__bar">Работа на российских ОС</div>
+        <div class="table__bar">Работа на российских операционных системах</div>
         <div class="table__bar">Собственная разработка на C++</div>
         <div class="table__bar">Установка простым копированием или пакетом</div>
         <div class="table__bar">Настройка через файл</div>
@@ -489,6 +532,270 @@
         </div>
       </div>
     </div>
+
+      <!-- Mobile only (Figma 770:1826): one module column at a time beside a
+           repeated label column, stepped with the arrows in each head. The
+           desktop table above shares cells across two modules at once, so it
+           cannot be reflowed into this shape — the content is restated here. -->
+      <div class="table__modules" id="tableModules">
+        <article class="table__module is-active" data-index="0">
+          <div class="table__module-grid">
+            <div class="table__module-label table__module-label--head"></div>
+            <div class="table__module-head">
+              <button class="table__module-nav" type="button" data-dir="-1" aria-label="Предыдущий модуль">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <p class="table__module-name">Перенос<br>Почтовых сообщений</p>
+              <button class="table__module-nav" type="button" data-dir="1" aria-label="Следующий модуль">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <div class="table__module-label">Технологии</div>
+            <div class="table__module-cell">
+              IMAP для доступа<br>в исходную и целевую системы
+            </div>
+            <div class="table__module-label">Особенности</div>
+            <div class="table__module-cell">
+              <ul>
+                <li>Возможность запуска<br>в многопоточном режиме</li>
+                <li>Детальное протоколирование работы</li>
+              </ul>
+            </div>
+            <div class="table__module-label">Скорость</div>
+            <div class="table__module-cell">
+              Скорость переноса<br>500 и более сообщений<br>в секунду
+            </div>
+            <div class="table__module-label">ОС</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Работа на российских операционных системах
+            </div>
+            <div class="table__module-label">Разработка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Собственная разработка на C++
+            </div>
+            <div class="table__module-label">Установка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Установка простым копированием или пакетом
+            </div>
+            <div class="table__module-label">Настройка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Настройка через файл
+            </div>
+            <div class="table__module-label">Ограничения</div>
+            <div class="table__module-cell table__module-cell--bar">
+              —
+            </div>
+          </div>
+        </article>
+        <article class="table__module" data-index="1">
+          <div class="table__module-grid">
+            <div class="table__module-label table__module-label--head"></div>
+            <div class="table__module-head">
+              <button class="table__module-nav" type="button" data-dir="-1" aria-label="Предыдущий модуль">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <p class="table__module-name">Синхронизация<br>учетных записей</p>
+              <button class="table__module-nav" type="button" data-dir="1" aria-label="Следующий модуль">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <div class="table__module-label">Технологии</div>
+            <div class="table__module-cell">
+              <ul>
+                <li>Синхронизация по протоколу LDAP</li>
+                <li>Один или несколько LDAP-каталогов</li>
+                <li>Поддержка как LDAP так и LDAPS</li>
+                <li>Направление из LDAP-каталога в CGP</li>
+              </ul>
+            </div>
+            <div class="table__module-label">Особенности</div>
+            <div class="table__module-cell">
+              <ul>
+                <li>Синхронизация вносимых изменений</li>
+                <li>Выбор мастер-каталога для каждой учетной записи</li>
+                <li>Возможность тонкой настройки соответствия атрибутов</li>
+              </ul>
+            </div>
+            <div class="table__module-label">Скорость</div>
+            <div class="table__module-cell">
+              Скорость обработки<br>10 000 учетных записей<br>в час
+            </div>
+            <div class="table__module-label">ОС</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Работа на российских операционных системах
+            </div>
+            <div class="table__module-label">Разработка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Собственная разработка на C++
+            </div>
+            <div class="table__module-label">Установка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Установка простым копированием или пакетом
+            </div>
+            <div class="table__module-label">Настройка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Настройка через файл
+            </div>
+            <div class="table__module-label">Ограничения</div>
+            <div class="table__module-cell table__module-cell--bar">
+              —
+            </div>
+          </div>
+        </article>
+        <article class="table__module" data-index="2">
+          <div class="table__module-grid">
+            <div class="table__module-label table__module-label--head"></div>
+            <div class="table__module-head">
+              <button class="table__module-nav" type="button" data-dir="-1" aria-label="Предыдущий модуль">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <p class="table__module-name">Перенос<br>групп рассылок</p>
+              <button class="table__module-nav" type="button" data-dir="1" aria-label="Следующий модуль">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <div class="table__module-label">Технологии</div>
+            <div class="table__module-cell">
+              <ul>
+                <li>Синхронизация по протоколу LDAP</li>
+                <li>Один или несколько LDAP-каталогов</li>
+                <li>Поддержка как LDAP так и LDAPS</li>
+                <li>Направление из LDAP-каталога в CGP</li>
+              </ul>
+            </div>
+            <div class="table__module-label">Особенности</div>
+            <div class="table__module-cell">
+              <ul>
+                <li>Синхронизация вносимых изменений</li>
+                <li>Выбор мастер-каталога для каждой учетной записи</li>
+                <li>Возможность тонкой настройки соответствия атрибутов</li>
+              </ul>
+            </div>
+            <div class="table__module-label">Скорость</div>
+            <div class="table__module-cell">
+              Скорость переноса<br>более 100 групп в час
+            </div>
+            <div class="table__module-label">ОС</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Работа на российских операционных системах
+            </div>
+            <div class="table__module-label">Разработка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Собственная разработка на C++
+            </div>
+            <div class="table__module-label">Установка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Установка простым копированием или пакетом
+            </div>
+            <div class="table__module-label">Настройка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Настройка через файл
+            </div>
+            <div class="table__module-label">Ограничения</div>
+            <div class="table__module-cell table__module-cell--bar">
+              —
+            </div>
+          </div>
+        </article>
+        <article class="table__module" data-index="3">
+          <div class="table__module-grid">
+            <div class="table__module-label table__module-label--head"></div>
+            <div class="table__module-head">
+              <button class="table__module-nav" type="button" data-dir="-1" aria-label="Предыдущий модуль">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <p class="table__module-name">Перенос<br>личных контактов</p>
+              <button class="table__module-nav" type="button" data-dir="1" aria-label="Следующий модуль">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <div class="table__module-label">Технологии</div>
+            <div class="table__module-cell">
+              <ul>
+                <li>XIMSS — для доступа в целевую систему</li>
+                <li>EWS — для доступа в исходную систему</li>
+              </ul>
+            </div>
+            <div class="table__module-label">Особенности</div>
+            <div class="table__module-cell">
+              Односторонний<br>и разовый перенос
+            </div>
+            <div class="table__module-label">Скорость</div>
+            <div class="table__module-cell">
+              Скорость переноса<br>в среднем 10 контактов<br>в секунду
+            </div>
+            <div class="table__module-label">ОС</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Работа на российских операционных системах
+            </div>
+            <div class="table__module-label">Разработка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Собственная разработка на C++
+            </div>
+            <div class="table__module-label">Установка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Установка простым копированием или пакетом
+            </div>
+            <div class="table__module-label">Настройка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Настройка через файл
+            </div>
+            <div class="table__module-label">Ограничения</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Ограничение переносимых полей (можно перенести только то, что на текущий момент поддерживает целевая система)
+            </div>
+          </div>
+        </article>
+        <article class="table__module" data-index="4">
+          <div class="table__module-grid">
+            <div class="table__module-label table__module-label--head"></div>
+            <div class="table__module-head">
+              <button class="table__module-nav" type="button" data-dir="-1" aria-label="Предыдущий модуль">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <p class="table__module-name">Перенос<br>календарных событий</p>
+              <button class="table__module-nav" type="button" data-dir="1" aria-label="Следующий модуль">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <div class="table__module-label">Технологии</div>
+            <div class="table__module-cell">
+              <ul>
+                <li>XIMSS — для доступа в целевую систему</li>
+                <li>EWS — для доступа в исходную систему</li>
+              </ul>
+            </div>
+            <div class="table__module-label">Особенности</div>
+            <div class="table__module-cell">
+              Двухсторонняя и постоянная синхронизация при переносе событий, задач, переговорок
+            </div>
+            <div class="table__module-label">Скорость</div>
+            <div class="table__module-cell">
+              Скорость синхронизации<br>более 10 событий<br>в секунду
+            </div>
+            <div class="table__module-label">ОС</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Работа на российских операционных системах
+            </div>
+            <div class="table__module-label">Разработка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Собственная разработка на C++
+            </div>
+            <div class="table__module-label">Установка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Установка простым копированием или пакетом
+            </div>
+            <div class="table__module-label">Настройка</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Настройка через файл
+            </div>
+            <div class="table__module-label">Ограничения</div>
+            <div class="table__module-cell table__module-cell--bar">
+              Ограничение переносимых полей (можно перенести только то, что на текущий момент поддерживает целевая система)
+            </div>
+          </div>
+        </article>
+      </div>
 
     <div class="table__buttons">
       <a class="btn btn--primary" href="#form">Запросить демо</a>
@@ -527,62 +834,51 @@
   <section class="cost section" id="cost">
     <h2 class="section-title">Стоимость и комплектация<br>ПК «Мигратор ЭПС»</h2>
 
-    <div class="cost__cards">
-      <div class="cost__card cost__card--blue">
-        <div>
-          <p class="cost__card-title">Лицензия</p>
-          <p class="cost__card-desc">Лицензия на программу для ЭВМ «Программный комплекс «Мигратор электронных почтовых систем», сроком действия 1 (один) год, предоставляющая право однократного переноса одного почтового ящика из исходной почтовой системы в целевую</p>
-        </div>
-        <div class="cost__buy">
-          <div class="cost__price">
-            <p class="cost__price-value">300 ₽</p>
-            <p class="cost__price-note">(вкл. НДС 22%)</p>
+    <div class="cost__content">
+      <div class="cost__cards">
+        <div class="cost__card cost__card--blue">
+          <div>
+            <p class="cost__card-title">Лицензия</p>
+            <p class="cost__card-desc">Лицензия на программу для ЭВМ «Программный комплекс «Мигратор электронных почтовых систем», сроком действия 1 (один) год, предоставляющая право однократного переноса одного почтового ящика из исходной почтовой системы в целевую</p>
           </div>
           <div class="cost__buy-actions">
-            <a class="btn btn--primary btn--block" href="#form">Купить</a>
+            <a class="btn btn--primary btn--block" href="#form">Запросить стоимость</a>
             <a class="cost__link" href="license.html">Лицензионная программа</a>
           </div>
         </div>
-      </div>
 
-      <div class="cost__card cost__card--purple">
-        <div>
-          <p class="cost__card-title">Комплект документации</p>
-          <p class="cost__card-desc">Комплект методических материалов по применению программы для ЭВМ «Программный комплекс «Мигратор электронных почтовых систем»</p>
-        </div>
-        <div class="cost__buy">
-          <div class="cost__price">
-            <p class="cost__price-value">170 000 ₽</p>
-            <p class="cost__price-note">(вкл. НДС 22%)</p>
+        <div class="cost__card cost__card--purple">
+          <div>
+            <p class="cost__card-title">Комплект документации</p>
+            <p class="cost__card-desc">Комплект методических материалов по применению программы для ЭВМ «Программный комплекс «Мигратор электронных почтовых систем»</p>
           </div>
           <div class="cost__buy-actions">
-            <a class="btn btn--primary btn--block" href="#form">Купить</a>
+            <a class="btn btn--primary btn--block" href="#form">Запросить стоимость</a>
             <a class="cost__link cost__link--hidden" href="#form">Лицензионная программа</a>
           </div>
         </div>
-      </div>
 
-      <div class="cost__card cost__card--orange">
-        <div>
-          <p class="cost__card-title">Сертификат техподдержки</p>
-          <p class="cost__card-desc">Сертификат технической поддержки программы для ЭВМ «Программный комплекс «Мигратор электронных почтовых систем», сроком действия 1 (один) год, для однократного переноса одного почтового ящика из исходной почтовой системы в целевую</p>
-        </div>
-        <div class="cost__buy">
-          <div class="cost__price">
-            <p class="cost__price-value">300 ₽</p>
-            <p class="cost__price-note">(вкл. НДС 22%)</p>
+        <div class="cost__card cost__card--orange">
+          <div>
+            <p class="cost__card-title">Сертификат техподдержки</p>
+            <p class="cost__card-desc">Сертификат технической поддержки программы для ЭВМ «Программный комплекс «Мигратор электронных почтовых систем», сроком действия 1 (один) год, для однократного переноса одного почтового ящика из исходной почтовой системы в целевую</p>
           </div>
           <div class="cost__buy-actions">
-            <a class="btn btn--primary btn--block" href="#form">Купить</a>
+            <a class="btn btn--primary btn--block" href="#form">Запросить стоимость</a>
             <a class="cost__link" href="reglament.html">Регламент технической поддержки</a>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="cost__alert">
-      <span class="cost__alert-icon">i</span>
-      <p>Под почтовым ящиком понимается уникальный учетный объект почтовой системы, предназначенный для приема, хранения и/или отправки электронных сообщений, имеющий отдельный идентификатор (адрес электронной почты) и собственное хранилище сообщений, вне зависимости от того, закреплен ли такой ящик за конкретным пользователем-физическим лицом, используется совместно несколькими лицами либо является техническим (сервисным)</p>
+      <div class="cost__alert">
+        <span class="cost__alert-icon">i</span>
+        <p>Достоверная информация о стоимости реализуемых (разрабатываемых) АО «БЕЗАНТ» товаров, оказываемых услуг и осуществляемых работ отнесена к коммерческой тайне АО «БЕЗАНТ» и предоставляется заинтересованным лицам по запросу на условиях неразглашения</p>
+      </div>
+
+      <div class="cost__alert">
+        <span class="cost__alert-icon">i</span>
+        <p>Под почтовым ящиком понимается уникальный учетный объект почтовой системы, предназначенный для приема, хранения и/или отправки электронных сообщений, имеющий отдельный идентификатор (адрес электронной почты) и собственное хранилище сообщений, вне зависимости от того, закреплен ли такой ящик за конкретным пользователем-физическим лицом, используется совместно несколькими лицами либо является техническим (сервисным)</p>
+      </div>
     </div>
   </section>
 
@@ -651,7 +947,7 @@
     </div>
     <div class="footer__block">
       <p class="footer__block-label">Сайт</p>
-      <a class="footer__block-value footer__block-link" href="https://www.bezant.pro" target="_blank" rel="noopener">www.bezant.pro</a>
+      <a class="footer__block-value footer__block-link" href="https://www.bezant.pro" target="_blank" rel="noopener">bezant.pro</a>
     </div>
     <div class="footer__contact">
       <p class="footer__phone">+7 (499) 150-61-67</p>
@@ -664,7 +960,9 @@
   </div>
 </footer>
 <script src="js/header.js"></script>
+<script src="js/table-modules.js"></script>
 <script src="js/calculator.js"></script>
+<script src="js/calculator-field.js"></script>
 <script src="js/video-carousel.js"></script>
 <script src="js/form.js"></script>
 </body>

@@ -1,0 +1,94 @@
+/* Standalone full-screen scheme page (graph.html).
+
+   The diagram is laid out at its natural desktop size (1360px wide, Figma
+   739:1014) and then scaled — and on portrait screens rotated — to fill the
+   viewport, so a phone shows the whole scheme instead of a 25% thumbnail.
+   js/scheme.js writes the transform; everything here is the frame around it. */
+
+.scheme {
+  /* base.css pins a 1200px desktop floor; this page fits itself instead. */
+  min-width: 0;
+  height: 100dvh;
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface-dark-blue);
+  color: var(--text-inverse);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fixed root size: the diagram must keep its 1440-design proportions no matter
+   how wide the screen is — fitting is done by the scale transform, not by rem. */
+.scheme,
+html:has(.scheme) {
+  font-size: 16px;
+}
+
+.scheme__bar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-16);
+  padding: var(--sp-12) var(--sp-16);
+  border-bottom: 1px solid rgba(132, 158, 181, 0.25);
+}
+
+.scheme__title {
+  font-size: var(--fs-body-16);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.scheme__actions {
+  display: flex;
+  gap: var(--sp-8);
+  flex-shrink: 0;
+}
+
+.scheme__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--surface-blue);
+  background: transparent;
+  color: var(--text-inverse);
+}
+
+.scheme__btn:hover {
+  background: var(--surface-blue-opacity);
+}
+
+.scheme__btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.scheme__stage {
+  flex: 1 1 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.scheme__fit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 85rem; /* 1360px — the Figma Graph frame */
+  transform-origin: center center;
+  /* translate(-50%, -50%) is applied together with the scale by scheme.js. */
+  transform: translate(-50%, -50%);
+}
+
+/* Undo the section-level width cap: here the diagram *is* the page. */
+.scheme .graph__diagram {
+  width: 100%;
+  max-width: none;
+}

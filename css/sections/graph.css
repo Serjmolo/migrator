@@ -146,3 +146,8 @@
 .graph__badge--strong {
   font-weight: 600;
 }
+
+/* Mobile-only CTA under the diagram (Figma 726:1384); see css/mobile.css. */
+.graph__cta {
+  display: none;
+}

@@ -1,0 +1,834 @@
+/* ==========================================================================
+   Mobile layer — one media query, loaded last so it wins over every section file.
+
+   Source of truth: Figma frame 724:582 «Main» (360px wide) in the same file as
+   the 1440px desktop frame. Values below are that frame's px ÷ 16, matching the
+   rem convention documented in CLAUDE.md.
+
+   Breakpoint is 1199px, not 767px: the design set has only 360 and 1440 frames,
+   so tablets get the mobile composition with the content column capped and
+   centred (--m-inset) rather than a third, undesigned layout.
+
+   Section order mirrors index.html / css/sections/*.css.
+   ========================================================================== */
+
+/* .98 rather than 1199: viewport widths can land on a fraction (zoom, scrollbar
+   rounding), and a whole-pixel bound leaves a sliver where neither layer wins. */
+@media (max-width: 1199.98px) {
+
+  /* ---- Scale & layout tokens ------------------------------------------- */
+  :root {
+    /* 4.4444vw = 16px at the 360px design width; capped there so the type
+       stops growing on tablets, floored at 320px-wide phones. */
+    --scale-vw: 4.4444vw;
+    --container-pad: 1rem;
+
+    /* Horizontal inset for every section: 16px gutters on phones, growing to
+       centre a 35rem (560px) column once the viewport is wider than that.
+       Same trick as the desktop --content-inset. */
+    --m-inset: max(1rem, calc((100% - 35rem) / 2));
+
+    --fs-h1: 2rem;         /* 32px */
+    --fs-h2: 1.75rem;      /* 28px */
+    --fs-lead: 1.125rem;   /* 18px */
+    --fs-numbers: 3rem;    /* 48px */
+  }
+
+  html {
+    font-size: clamp(14.222px, var(--scale-vw), 16px);
+    scroll-padding-top: 5.5rem; /* 74px mobile header + breathing room */
+  }
+
+  body {
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .section-lead {
+    max-width: none;
+  }
+
+  /* ---- Header (724:592) — logo + demo button, no nav -------------------- */
+  .header {
+    padding: 1.25rem var(--m-inset); /* 20 + 34 + 20 = 74px tall */
+  }
+
+  .header__logo img {
+    height: 1.65rem; /* 26.5px */
+  }
+
+  .header__menu {
+    display: none;
+  }
+
+  .header > .btn {
+    padding: var(--sp-8) var(--sp-16);
+    font-size: var(--fs-ui-xs);
+    line-height: 1.125rem;
+  }
+
+  /* ---- Hero (724:583) — art on top, navy text block below --------------- */
+  .hero {
+    display: block;
+    height: auto;
+    padding-bottom: var(--sp-32);
+  }
+
+  .hero__bg {
+    position: static;
+    height: 17.9375rem; /* 287px */
+    overflow: hidden;
+  }
+
+  /* The banner art is 2.25:1; this crop window keeps both racks and the transfer
+     arc in frame instead of centring on empty background. */
+  .hero__bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+  }
+
+  /* The legibility gradient only exists to darken text over the art; on mobile
+     the text sits on solid navy underneath it. */
+  .hero__bg::after {
+    display: none;
+  }
+
+  .hero__content {
+    width: auto;
+    margin-left: 0;
+    gap: var(--sp-24);
+    padding: var(--sp-24) var(--m-inset) 0;
+  }
+
+  .hero__title h1 {
+    white-space: normal;
+  }
+
+  /* The desktop lead breaks after "данные"; at 328px it needs to rewrap freely. */
+  .hero__title p br {
+    display: none;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__buttons .btn {
+    width: 100%;
+  }
+
+  /* ---- Data (724:601) — 3-per-row grid, 72px chips ---------------------- */
+  .data {
+    gap: var(--sp-40);
+    padding: var(--sp-64) var(--m-inset) var(--sp-32);
+  }
+
+  .data__grid {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: var(--sp-20);
+    column-gap: 0;
+  }
+
+  .data__item {
+    width: 33.3333%;
+  }
+
+  .data__icon img {
+    width: 4.5rem; /* 72px */
+    height: 4.5rem;
+  }
+
+  .data__item p {
+    font-size: var(--fs-body-14);
+  }
+
+  /* ---- UTP (724:639) — image stacked above the card --------------------- */
+  .utp {
+    flex-direction: column;
+    gap: var(--sp-8);
+    max-width: none;
+    padding: var(--sp-32) var(--m-inset);
+  }
+
+  .utp__image {
+    order: -1;
+    flex: 0 0 auto; /* desktop's flex-basis:0 would collapse it in a column */
+    width: 100%;
+    height: 16.25rem; /* 260px */
+  }
+
+  .utp__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .utp__text {
+    width: 100%;
+    gap: var(--sp-32);
+    padding: var(--sp-24) var(--sp-16);
+  }
+
+  .utp__text p.utp__body {
+    font-size: var(--fs-body-16);
+  }
+
+  .utp__buttons {
+    flex-direction: column;
+  }
+
+  .utp__buttons .btn {
+    width: 100%;
+  }
+
+  /* ---- Speed (724:649) — stacked cards, icon beside the number ---------- */
+  .speed {
+    gap: var(--sp-40);
+    padding: var(--sp-32) var(--m-inset) var(--sp-64);
+  }
+
+  .speed__grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .speed__card {
+    flex: 0 0 auto;
+    height: 7.3125rem; /* 117px */
+    align-items: center;
+  }
+
+  .speed__card-inner {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--sp-24);
+    height: auto;
+  }
+
+  .speed__card-inner img {
+    width: 3rem; /* 48px */
+    height: 3rem;
+    flex-shrink: 0;
+  }
+
+  .speed__label {
+    font-size: var(--fs-lead);
+    line-height: 1.4;
+  }
+
+  /* ---- Graph (724:702) — data chips and protocol badges drop out -------- */
+  .graph {
+    gap: var(--sp-32);
+    padding: var(--sp-64) var(--m-inset);
+  }
+
+  .graph__block {
+    padding: var(--sp-16) var(--sp-24);
+  }
+
+  .graph__block--reverse {
+    padding: var(--sp-16) var(--sp-24) var(--sp-24);
+  }
+
+  .graph__block-title,
+  .graph__core-title {
+    font-size: var(--fs-lead);
+    line-height: 1.4;
+  }
+
+  .graph__row {
+    display: none;
+  }
+
+  .graph__core {
+    padding: var(--sp-16) var(--sp-24);
+  }
+
+  /* One centred bidirectional arrow stands in for the seven per-data-type
+     connectors; the protocol badges go with them. */
+  .graph__connectors {
+    padding: var(--sp-8) 0;
+  }
+
+  .graph__connector:not(:first-child) {
+    display: none;
+  }
+
+  .graph__connector {
+    flex: 0 0 auto;
+  }
+
+  .graph__badge {
+    display: none;
+  }
+
+  .graph__cta {
+    display: inline-flex;
+    width: 100%;
+    margin-top: var(--sp-32);
+  }
+
+  /* ---- Calculator (724:813) — single column, value on the title row ----- */
+  .calculator {
+    gap: var(--sp-32);
+    padding: var(--sp-64) var(--m-inset);
+  }
+
+  .calc {
+    flex-direction: column;
+    max-width: none;
+  }
+
+  .calc__left {
+    width: 100%;
+  }
+
+  /* The three slider cells collapse to a 2-column grid so the readout sits
+     next to its label instead of on a line of its own (Figma 724:819). */
+  .calc__left > .calc__cell:not(:last-child) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    column-gap: var(--sp-8);
+    row-gap: var(--sp-12);
+    padding: var(--sp-8) var(--sp-12);
+  }
+
+  /* The static readout gives way to the typeable field (Figma 724:817); the <p>
+     stays in the DOM because js/calculator.js writes the formatted value there
+     and js/calculator-field.js mirrors it into the input. */
+  .calc__left > .calc__cell:not(:last-child) > .calc__cell-value {
+    display: none;
+  }
+
+  .calc__left > .calc__cell:not(:last-child) > .calc__field {
+    grid-row: 1;
+    grid-column: 2;
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    min-width: 4.625rem; /* 74px */
+    padding: 0.25rem var(--sp-8);
+    border: 1px solid var(--ui-disable);
+    border-radius: var(--sp-8);
+    background: var(--surface-white);
+  }
+
+  .calc__left > .calc__cell:not(:last-child) > .calc__field:focus-within {
+    border-color: var(--surface-blue);
+  }
+
+  .calc__field--tight {
+    gap: 0;
+  }
+
+  .calc__field-input {
+    width: 3.75rem; /* 60px — fits "100.00" */
+    min-width: 0;
+    border: none;
+    padding: 0;
+    background: transparent;
+    font-family: inherit;
+    font-size: var(--fs-body-16);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--text-primary);
+    text-align: right;
+  }
+
+  .calc__field-input:focus {
+    outline: none;
+  }
+
+  .calc__field-unit {
+    flex-shrink: 0;
+    font-size: var(--fs-body-14);
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .calc__left > .calc__cell:not(:last-child) > .calc__range {
+    grid-column: 1 / -1;
+    padding-top: 0;
+  }
+
+  .calc__cell-title {
+    font-size: var(--fs-body-14);
+    line-height: 1.3;
+  }
+
+  /* The hint bubbles need a hover/pointer to reach; the labels carry the same
+     information on the range itself. */
+  .calc__tip {
+    display: none;
+  }
+
+  .calc__range-ticks {
+    margin-top: 0.375rem;
+  }
+
+  .calc__range-labels {
+    font-size: var(--fs-ui-s);
+  }
+
+  .calc__cell:last-child {
+    padding: var(--sp-12) var(--sp-16);
+  }
+
+  .calc__right {
+    flex: 0 0 auto;
+  }
+
+  .calc__panel {
+    gap: var(--sp-12);
+    padding: var(--sp-20) var(--sp-16);
+  }
+
+  /* Figma 724:872 keeps only two readouts on mobile: the migration speed and the
+     working-day count. The message-count/average-size panel and the duration row
+     stay in the DOM — js/calculator.js writes to them — but are not shown. */
+  .calc__panel--blue {
+    display: none;
+  }
+
+  .calc__panel--purple .calc__panel-item:nth-child(2) {
+    display: none;
+  }
+
+  .calc__panel-item p:last-child {
+    font-size: var(--fs-body-20);
+  }
+
+  .calc__buttons .btn {
+    width: 100%;
+  }
+
+  /* ---- Sync (724:894) — two stacked 2-column tables --------------------- */
+  .sync {
+    gap: var(--sp-40);
+    padding: var(--sp-64) var(--m-inset) var(--sp-32);
+  }
+
+  .sync__title {
+    max-width: none;
+  }
+
+  /* Figma 724:898: 4px card inset, 24px between the copy and the white table
+     block (the desktop card puts them side by side, so it has no such gap). */
+  .sync__card {
+    flex-direction: column;
+    gap: var(--sp-24);
+    padding: var(--sp-4);
+  }
+
+  .sync__text {
+    padding: var(--sp-16);
+    font-size: var(--fs-body-16);
+  }
+
+  .sync__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .sync__table {
+    width: 100%;
+    flex-wrap: wrap;
+    row-gap: var(--sp-4);
+  }
+
+  .sync__col {
+    flex: 0 0 50%;
+    padding: var(--sp-16) var(--sp-12);
+  }
+
+  .sync__col--repeat {
+    display: flex;
+  }
+
+  /* Each row is its own rounded table, so the corners follow the pair, not the
+     original three-across strip. */
+  .sync__col--orange { border-radius: 0.5rem 0 0 0.5rem; }
+  .sync__col--blue,
+  .sync__col--purple { border-radius: 0 0.5rem 0.5rem 0; }
+
+  .sync__col-title {
+    font-size: var(--fs-body-16);
+  }
+
+  /* Equal fr rows so the dividers line up across the label and check columns —
+     space-between drifts once the labels wrap to two lines at this width. */
+  .sync__col-rows {
+    display: grid;
+    grid-template-rows: auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .sync__divider {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .sync__row-label {
+    font-size: var(--fs-body-14);
+  }
+
+  /* ---- Info (724:934) — image stacked above the navy card -------------- */
+  .info {
+    flex-direction: column;
+    gap: var(--sp-8);
+    max-width: none;
+    padding: var(--sp-32) var(--m-inset);
+  }
+
+  .info__image {
+    order: -1;
+    flex: 0 0 auto; /* desktop's flex-basis:0 would collapse it in a column */
+    width: 100%;
+    height: 16.25rem; /* 260px */
+  }
+
+  .info__text {
+    width: 100%;
+    gap: var(--sp-40);
+    padding: var(--sp-32) var(--sp-16);
+  }
+
+  .info__columns {
+    flex-direction: column;
+    gap: var(--sp-32);
+  }
+
+  .info__col:first-child,
+  .info__col:last-child {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  .info__col-title,
+  .info__col ul {
+    font-size: var(--fs-body-16);
+  }
+
+  .info__buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .info__buttons .btn {
+    width: 100%;
+  }
+
+  /* ---- Table (724:950) — sticky label column + sideways scroll ---------- */
+  .table-section {
+    gap: var(--sp-40);
+    padding: var(--sp-32) var(--m-inset) var(--sp-64);
+  }
+
+  /* The desktop table shares cells across two modules at a time and cannot be
+     reflowed into per-module columns, so mobile swaps in its own markup. */
+  .table__wrap {
+    display: none;
+  }
+
+  .table__modules {
+    display: block;
+    width: 100%;
+  }
+
+  .table__module {
+    display: none;
+  }
+
+  .table__module.is-active {
+    display: block;
+  }
+
+  /* 120px label column + the module column. Auto rows keep the two sides
+     aligned without the hard-coded heights the desktop table needs. */
+  .table__module-grid {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    column-gap: var(--sp-8);
+    align-items: stretch;
+  }
+
+  .table__module-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-8) var(--sp-12);
+    background: var(--surface-purple-01);
+    border-top: 1px solid var(--surface-white);
+    font-size: var(--fs-body-14);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.006em;
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  /* One continuous purple block: only the outer corners are rounded and the
+     head cell carries no divider. */
+  .table__module-label--head {
+    border-top: none;
+    border-radius: var(--radius-12) var(--radius-12) 0 0;
+    padding-top: var(--sp-16);
+  }
+
+  .table__module-grid > .table__module-label:last-of-type {
+    border-radius: 0 0 var(--radius-12) var(--radius-12);
+  }
+
+  .table__module-head {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+    padding: var(--sp-16) var(--sp-12) var(--sp-16);
+    background: var(--surface-light-blue-02);
+    border-radius: var(--radius-12) var(--radius-12) 0 0;
+  }
+
+  .table__module-name {
+    flex: 1 0 0;
+    min-width: 0;
+    background: var(--surface-white);
+    border-radius: var(--radius-12);
+    padding: var(--sp-8) var(--sp-4);
+    font-size: var(--fs-body-14);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  .table__module-nav {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+  }
+
+  /* At the ends the arrow is absent in the design rather than dimmed; keeping
+     the box reserved stops the module name from shifting. */
+  .table__module-nav:disabled {
+    visibility: hidden;
+  }
+
+  .table__module-nav svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .table__module-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-16) var(--sp-12);
+    background: var(--surface-light-blue-02);
+    border-top: 1px solid var(--surface-white);
+    font-size: var(--fs-body-14);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+    text-align: center;
+  }
+
+  .table__module-cell ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .table__module-cell li::before {
+    content: "•";
+    margin-right: 0.375rem;
+  }
+
+  /* Rows 4–8 are separate bars in the design, split off from the module card. */
+  .table__module-cell--bar {
+    margin-top: var(--sp-4);
+    border-top: none;
+    border-radius: var(--radius-12);
+  }
+
+  .table__module-grid > .table__module-cell:nth-last-of-type(6) {
+    border-radius: 0 0 var(--radius-12) var(--radius-12);
+  }
+
+  .table__buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .table__buttons .btn {
+    width: 100%;
+  }
+
+  /* ---- Video (724:1090) — one slide, centred nav ------------------------ */
+  .video {
+    gap: var(--sp-40);
+    padding: var(--sp-48) var(--m-inset);
+  }
+
+  .video__stage {
+    height: 13.5625rem; /* 217px */
+    /* The off-stage staging slots sit a slide-width past each edge; with no peek
+       slots to reveal them they would only widen the page. */
+    overflow: hidden;
+  }
+
+  /* The peek slots have nowhere to go at this width, so only the active slide
+     renders. JS keeps swapping the same three slots underneath. */
+  .video__slide.pos-prev,
+  .video__slide.pos-next,
+  .video__slide.pos-offleft,
+  .video__slide.pos-offright {
+    opacity: 0;
+  }
+
+  .video__slide.pos-active {
+    width: 100%;
+    height: 100%;
+  }
+
+  .video__play {
+    width: 2.5625rem; /* 41px */
+    height: 2.5625rem;
+  }
+
+  .video__play svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .video__footer {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-24);
+    width: 100%;
+    padding-left: 0;
+  }
+
+  .video__caption {
+    text-align: center;
+  }
+
+  /* ---- Cost (724:1110) — cards stacked ---------------------------------- */
+  .cost {
+    gap: var(--sp-40);
+    padding: var(--sp-64) var(--m-inset);
+  }
+
+  .cost__cards {
+    flex-direction: column;
+  }
+
+  .cost__card {
+    flex: 0 0 auto;
+    gap: var(--sp-24);
+  }
+
+  /* The spacer link only exists to keep the three desktop cards the same
+     height; stacked, it is just an empty gap. */
+  .cost__link--hidden {
+    display: none;
+  }
+
+  .cost__alert {
+    gap: var(--sp-16);
+    padding: var(--sp-20) var(--sp-16);
+  }
+
+  /* ---- Form (724:1157) — fields stacked --------------------------------- */
+  .contact-form {
+    gap: var(--sp-40);
+    padding: var(--sp-48) var(--m-inset);
+    border-radius: var(--radius-24);
+  }
+
+  .contact-form form {
+    gap: var(--sp-32);
+  }
+
+  .contact-form__row {
+    flex-direction: column;
+  }
+
+  .contact-form__field input,
+  .contact-form__textarea textarea {
+    font-size: var(--fs-body-16);
+  }
+
+  .contact-form button[type="submit"] {
+    width: 100%;
+  }
+
+  /* ---- FAQ (724:1168) --------------------------------------------------- */
+  .faq {
+    gap: var(--sp-40);
+    padding: var(--sp-64) var(--m-inset);
+  }
+
+  .faq__item {
+    padding: var(--sp-16);
+  }
+
+  .faq__item summary {
+    gap: var(--sp-12);
+    font-size: var(--fs-body-16);
+  }
+
+  .faq__icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .faq__answer {
+    font-size: var(--fs-body-14);
+  }
+
+  /* ---- Footer (724:1178) — single left-aligned column ------------------- */
+  .footer {
+    align-items: stretch;
+    gap: var(--sp-32);
+    padding: var(--sp-48) var(--m-inset) var(--sp-48);
+  }
+
+  .footer__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-32);
+  }
+
+  .footer__logo img {
+    height: 3.3125rem; /* 53px */
+  }
+
+  .footer__block {
+    white-space: normal;
+  }
+
+  .footer__contact {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .footer__phone {
+    font-size: var(--fs-lead);
+  }
+}

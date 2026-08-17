@@ -206,6 +206,13 @@
   margin: 0;
 }
 
+/* Bullets are drawn inline (::before) rather than as list markers so each
+   wrapped line stays centred inside the cell, matching the Figma frame. */
+.table__group-row li::before {
+  content: "•";
+  margin-right: 0.375rem;
+}
+
 .table__group-row p {
   margin: 0 0 0.25rem;
 }
@@ -222,4 +229,9 @@
 
 .table__buttons .btn {
   width: 15rem; /* 240px */
+}
+
+/* Per-module mobile view of this table (Figma 770:1826); see css/mobile.css. */
+.table__modules {
+  display: none;
 }

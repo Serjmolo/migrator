@@ -50,6 +50,11 @@
   text-align: left;
 }
 
+/* Typeable readout — mobile only, see css/mobile.css and js/calculator-field.js. */
+.calc__field {
+  display: none;
+}
+
 /* ---- Range control ---- */
 .calc__range {
   position: relative;

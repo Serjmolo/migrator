@@ -124,3 +124,8 @@
   border-width: 0 0 2px 2px;
   transform: rotate(-45deg) translateY(-1px);
 }
+
+/* Duplicate row-label column, used only by the stacked mobile table layout. */
+.sync__col--repeat {
+  display: none;
+}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Принципиальная схема ПК «Мигратор ЭПС»</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sections/graph.css">
+<link rel="stylesheet" href="css/scheme.css">
+<!-- css/mobile.css is deliberately NOT loaded: this page always shows the full
+     desktop diagram (Figma 739:1012), scaled to fit whatever screen opens it. -->
+</head>
+<body class="scheme">
+
+<div class="scheme__bar">
+  <p class="scheme__title">Принципиальная схема ПК «Мигратор ЭПС»</p>
+  <div class="scheme__actions">
+    <button class="scheme__btn" type="button" id="schemeFullscreen" aria-label="Во весь экран">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9V4H9M15 4H20V9M20 15V20H15M9 20H4V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="scheme__btn" type="button" id="schemeClose" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="scheme__stage" id="schemeStage">
+  <div class="scheme__fit" id="schemeFit">
+    <div class="graph__diagram">
+      <div class="graph__block">
+        <p class="graph__block-title">Исходная почтовая система — <strong>MS Exchange</strong></p>
+        <div class="graph__row">
+          <div class="graph__item">Почтовые сообщения</div>
+          <div class="graph__item">Учетные записи</div>
+          <div class="graph__item">Группы рассылок</div>
+          <div class="graph__item">Календарные события</div>
+          <div class="graph__item">Личные контакты</div>
+          <div class="graph__item">Задачи</div>
+          <div class="graph__item">Переговорки</div>
+        </div>
+      </div>
+
+      <div class="graph__connectors">
+        <div class="graph__connector graph__connector--bidir"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge graph__badge--strong">IMAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">LDAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">LDAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector graph__connector--bidir"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">EWS</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">EWS</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector graph__connector--bidir"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">EWS</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector graph__connector--bidir"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">EWS</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+      </div>
+
+      <div class="graph__core">
+        <p class="graph__core-title">Программный комплекс «Мигратор электронных почтовых систем»</p>
+      </div>
+
+      <div class="graph__connectors">
+        <div class="graph__connector graph__connector--bidir"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge graph__badge--strong">IMAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">LDAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">LDAP</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector graph__connector--bidir"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">XIMSS</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">XIMSS</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector graph__connector--bidir"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">XIMSS</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+        <div class="graph__connector graph__connector--bidir"><div class="graph__connector-line graph__connector-line--top"></div><div class="graph__badge">XIMSS</div><div class="graph__connector-line graph__connector-line--bottom"></div></div>
+      </div>
+
+      <div class="graph__block graph__block--reverse">
+        <div class="graph__row">
+          <div class="graph__item">Почтовые сообщения</div>
+          <div class="graph__item">Учетные записи</div>
+          <div class="graph__item">Группы рассылок</div>
+          <div class="graph__item">Календарные события</div>
+          <div class="graph__item">Личные контакты</div>
+          <div class="graph__item">Задачи</div>
+          <div class="graph__item">Переговорки</div>
+        </div>
+        <p class="graph__block-title">Целевая почтовая система — <strong>CommuniGate Pro</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/scheme.js"></script>
+</body>
+</html>

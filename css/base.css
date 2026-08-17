@@ -21,6 +21,7 @@ body {
   font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text-primary);
   background: var(--surface-white);
+  /* Desktop layout floor. Below 1200px css/mobile.css takes over and drops this. */
   min-width: 1200px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
