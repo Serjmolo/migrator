@@ -594,30 +594,50 @@
     border-radius: 0 0 var(--radius-12) var(--radius-12);
   }
 
+  /* Figma 770:1875: the name pill fills the head (176 of the 200 module, 12px
+     inset) and the arrows are laid over it, so the head is a positioning
+     context rather than a flex row — a flex row would shrink the pill by the
+     width of both arrows and push the name onto a third line. */
   .table__module-head {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-4);
+    position: relative;
     padding: var(--sp-16) var(--sp-12) var(--sp-16);
     background: var(--surface-light-blue-02);
     border-radius: var(--radius-12) var(--radius-12) 0 0;
   }
 
   .table__module-name {
-    flex: 1 0 0;
-    min-width: 0;
     background: var(--surface-white);
     border-radius: var(--radius-12);
-    padding: var(--sp-8) var(--sp-4);
+    /* Wider than the 8px of the Figma frame: the arrows are laid over the pill
+       and their tips reach 21px in from its edges, so the text column is inset
+       past them (24px leaves a 3px gap). Two of the five names take a third
+       line at this width — the alternative is letters touching the arrows. */
+    padding: var(--sp-8) var(--sp-24);
     font-size: var(--fs-body-14);
     font-weight: 700;
     line-height: 1.2;
     color: var(--text-primary);
     text-align: center;
+    /* Held at the height of the longest name (three lines + the 8px padding),
+       so switching modules moves neither the arrows nor the rows below. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(3 * 1.2em + var(--sp-16));
   }
 
+  /* 24×24 box, 16px in from the module edge, centred on the 50px pill
+     (Figma Nav x=16 / y=29). The right arrow's 184 in the file is left over
+     from a 224-wide draft — 23px and 201px from the two edges are symmetric
+     only at that width — so it is mirrored off the same 16px inset here. */
   .table__module-nav {
-    flex-shrink: 0;
+    position: absolute;
+    /* Centred on the pill rather than offset from the head's top: the head's
+       16px padding is symmetric, so 50% is the pill's middle whatever height
+       the name takes, and the arrow stays put across modules. At the two-line
+       height of the Figma frame this lands on its 29px. */
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -628,6 +648,9 @@
     background: transparent;
     color: var(--text-primary);
   }
+
+  .table__module-nav[data-dir="-1"] { left: var(--sp-16); }
+  .table__module-nav[data-dir="1"] { right: var(--sp-16); }
 
   /* At the ends the arrow is absent in the design rather than dimmed; keeping
      the box reserved stops the module name from shifting. */
