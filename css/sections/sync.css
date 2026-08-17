@@ -96,7 +96,7 @@
 .sync__divider {
   width: 9.5rem; /* 153px */
   height: 1px;
-  background: var(--ui-disable);
+  background: var(--surface-white);
 }
 
 .sync__row-label {

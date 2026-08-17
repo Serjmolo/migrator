@@ -469,6 +469,11 @@
     grid-template-rows: auto 1fr auto 1fr auto 1fr;
     align-items: center;
     justify-items: center;
+    /* The desktop rule sets space-between for its flex layout; left in place it
+       would size this grid's single track to its content (32px in the check
+       columns) and park it at the start, so the ticks and their rules end up
+       flush left instead of centred (Figma 739:96). */
+    justify-content: normal;
   }
 
   .sync__divider {
@@ -583,7 +588,9 @@
     padding-top: var(--sp-16);
   }
 
-  .table__module-grid > .table__module-label:last-of-type {
+  /* Rows are label+cell pairs, so the closing label is the second-to-last child.
+     (:last-of-type would count every div in the grid and land on a cell.) */
+  .table__module-grid > .table__module-label:nth-last-child(2) {
     border-radius: 0 0 var(--radius-12) var(--radius-12);
   }
 
@@ -666,7 +673,9 @@
     border-radius: var(--radius-12);
   }
 
-  .table__module-grid > .table__module-cell:nth-last-of-type(6) {
+  /* Head + the first three rows are one card; child 8 is that third row's cell
+     and closes it before the separate bars start. */
+  .table__module-grid > .table__module-cell:nth-child(8) {
     border-radius: 0 0 var(--radius-12) var(--radius-12);
   }
 
