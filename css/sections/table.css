@@ -55,8 +55,10 @@
   min-height: 0;
 }
 
+/* Tracks the restrictions bar's height; retuned from 120 when that bar went
+   from 7.5rem to 5.125rem. */
 .table__label-row--wide {
-  flex-grow: 120;
+  flex-grow: 82;
 }
 
 .table__values {
@@ -81,8 +83,14 @@
   padding: 0 var(--sp-16);
 }
 
+/* Three lines of text plus padding — the tallest the copy gets, at 1200px
+   where the cell is narrowest. A rem min-height rather than a content-driven
+   height keeps the ratio to the plain bars the same at every width, so the
+   label column stays level with it (see .table__label-row--wide); the base
+   rule's fixed height has to be released for it to apply. */
 .table__bar--restrictions {
-  height: 7.5rem;
+  height: auto;
+  min-height: 5.125rem; /* 82px */
   padding: 0;
 }
 
@@ -111,6 +119,13 @@
 
 .table__bar-cols > div.span-2 {
   flex: 2 0 0;
+}
+
+/* The first value column is the fixed-width single group, not an equal share
+   of the row — same width as .table__group--single so the cells below the
+   heads line up with them. */
+.table__bar-cols > div.is-single {
+  flex: 0 0 15.875rem; /* 254px */
 }
 
 .data-table__head-pill {

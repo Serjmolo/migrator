@@ -523,11 +523,15 @@
         <div class="table__bar">Настройка через файл</div>
 
         <div class="table__bar table__bar--restrictions">
+          <!-- Three separate dashes, then one cell spanning личные контакты +
+               календарные события — both carry the restriction. The first cell
+               is the fixed-width single group, so each dash lands under its own
+               column head. -->
           <div class="table__bar-cols">
+            <div class="is-muted is-single">—</div>
             <div class="is-muted">—</div>
-            <div class="is-muted span-2">—</div>
             <div class="is-muted">—</div>
-            <div>Ограничение переносимых полей (можно перенести только то, что на текущий момент поддерживает целевая система)</div>
+            <div class="span-2">Ограничение переносимых полей (можно перенести только то, что на текущий момент поддерживает целевая система)</div>
           </div>
         </div>
       </div>
